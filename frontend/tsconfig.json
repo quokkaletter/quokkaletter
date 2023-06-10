@@ -23,8 +23,18 @@
     "strict": true,
     "noUnusedLocals": true,
     "noUnusedParameters": true,
-    "noFallthroughCasesInSwitch": true
+    "noFallthroughCasesInSwitch": true,
+
+    /* Additional options */
+    "allowJs": true,
+    "forceConsistentCasingInFileNames": true,
+    "incremental": true,
+    "esModuleInterop": true,
+    "noImplicitAny": true,
+    "alwaysStrict": true,
+    "downlevelIteration": true
   },
   "include": ["src"],
-  "references": [{"path": "./tsconfig.node.json"}]
+  "references": [{ "path": "./tsconfig.node.json" }],
+  "exclude": ["node_modules"]
 }
