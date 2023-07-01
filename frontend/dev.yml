@@ -1,0 +1,16 @@
+version: '3.1'
+
+name: rolling-in-the-3d
+
+services:
+  rolling-in-the-3d:
+    container_name: rolling-in-the-3d
+    build:
+      context: .
+      dockerfile: dev.dockerfile
+    restart: always
+    volumes:
+      - ./:/app
+      - /app/node_modules
+    ports:
+      - 3020:3000

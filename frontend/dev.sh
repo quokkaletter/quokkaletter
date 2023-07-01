@@ -1,0 +1,1 @@
+docker compose -f dev.yml up --force-recreate --build -d
