@@ -48,8 +48,6 @@
       }
     ],
     "eqeqeq": ["error", "always"],
-    "react/no-unknown-property": ["error", { "ignore": ["css"] }],
-    "simple-import-sort/imports": "error",
-    "simple-import-sort/exports": "error"
+    "react/no-unknown-property": ["error", { "ignore": ["css"] }]
   }
 }
