@@ -1,4 +1,3 @@
-import AuthSession from 'app/components/common/auth/AuthSession';
 import './globals.css';
 
 export const metadata = {
@@ -13,9 +12,7 @@ type RootLayoutProps = {
 export default function RootLayout({ children }: RootLayoutProps) {
   return (
     <html>
-      <body>
-        <AuthSession>{children}</AuthSession>
-      </body>
+      <body>{children}</body>
     </html>
   );
 }
