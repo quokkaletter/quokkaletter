@@ -6,6 +6,6 @@ type AuthSessionProps = {
   children: ReactNode;
 };
 
-export default function AuthSession({ children }: AuthSessionProps) {
+export const AuthSession = ({ children }: AuthSessionProps) => {
   return <SessionProvider>{children}</SessionProvider>;
-}
+};

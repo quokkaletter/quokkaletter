@@ -1,5 +1,5 @@
-import React from 'react';
+import { KakaoLoginButton } from 'components/KakaoLoginButton';
 
 export default function Home() {
-  return <div>하이</div>;
+  return <KakaoLoginButton />;
 }
