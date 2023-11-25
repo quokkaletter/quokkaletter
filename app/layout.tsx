@@ -1,5 +1,7 @@
+import { Header } from '@components/header';
 import './globals.css';
 import { AuthSession } from 'components/common/auth/AuthSession';
+import { jua } from 'utils/fonts';
 
 export const metadata = {
   title: 'quokka letter',
@@ -13,9 +15,12 @@ type RootLayoutProps = {
 export default function RootLayout({ children }: RootLayoutProps) {
   return (
     <html>
-      <body>
+      <body className={`${jua.className}`}>
         <AuthSession>
-          <main className="mx-auto max-w-[400px]">{children}</main>
+          <main className="mx-auto max-w-[400px]">
+            <Header />
+            {children}
+          </main>
         </AuthSession>
       </body>
     </html>
