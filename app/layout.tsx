@@ -1,4 +1,5 @@
 import './globals.css';
+import { AuthSession } from 'components/common/auth/AuthSession';
 
 export const metadata = {
   title: 'quokka letter',
@@ -12,7 +13,9 @@ type RootLayoutProps = {
 export default function RootLayout({ children }: RootLayoutProps) {
   return (
     <html>
-      <body>{children}</body>
+      <body>
+        <AuthSession>{children}</AuthSession>
+      </body>
     </html>
   );
 }
