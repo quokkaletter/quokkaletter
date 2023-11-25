@@ -6,3 +6,19 @@
   * Custom CSS
 */
 @import url('./reset.css');
+
+/**
+  * Custom CSS
+*/
+@keyframes slide-left {
+  from {
+    transform: translateX(100%);
+  }
+  to {
+    transform: translateX(0);
+  }
+}
+
+.visible {
+  animation: slide-left 0.5s forwards;
+}
