@@ -16,6 +16,7 @@ export default function RootLayout({ children }: RootLayoutProps) {
   return (
     <html>
       <body className={`${jua.className}`}>
+        <div id="modal" />
         <AuthSession>
           <main className="mx-auto max-w-[400px]">
             <Header />
