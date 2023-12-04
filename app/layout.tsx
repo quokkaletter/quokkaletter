@@ -2,6 +2,7 @@ import { Header } from '@components/header';
 import './globals.css';
 import { AuthSession } from 'components/common/auth/AuthSession';
 import { jua } from 'utils/fonts';
+import QueryProvider from '@components/common/query/QueryProvider';
 
 export const metadata = {
   title: 'quokka letter',
@@ -18,10 +19,12 @@ export default function RootLayout({ children }: RootLayoutProps) {
       <body className={`${jua.className}`}>
         <div id="modal" />
         <AuthSession>
-          <main className="mx-auto max-w-[400px]">
-            <Header />
-            {children}
-          </main>
+          <QueryProvider>
+            <main className="mx-auto max-w-[400px]">
+              <Header />
+              {children}
+            </main>
+          </QueryProvider>
         </AuthSession>
       </body>
     </html>
