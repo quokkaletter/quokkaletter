@@ -33,13 +33,13 @@
     --destructive: 0 84.2% 60.2%;
     --destructive-foreground: 210 40% 98%;
 
-    --green: 79, 16%, 34%;
-    --green-foreground: 83, 32%, 43%;
+    --green: 79 16% 34%;
+    --green-foreground: 83 32% 43%;
 
-    --orange: 29, 82%, 50%;
-    --orange-foreground: 35, 80%, 60%;
+    --orange: 29 82% 50%;
+    --orange-foreground: 35 80% 60%;
 
-    --yellow: 35, 77%, 78%;
+    --yellow: 35 77% 78%;
 
     --border: 214.3 31.8% 91.4%;
     --input: 214.3 31.8% 91.4%;
