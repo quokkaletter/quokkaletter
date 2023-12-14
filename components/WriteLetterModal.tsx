@@ -25,7 +25,7 @@ export const WriteLetterModal = ({
         <div className="modalPosition bg-white p-8 rounded-md w-[90%] max-w-[480px] max-h-[500px] h-[60%]">
           <h1>편지를 쓰는 모달입니다.</h1>
           <Textarea
-            className="w-full h-full"
+            className="w-full h-full resize-none"
             onChange={handleLetterChange}
             value={letter}
             placeholder="평소에 {{userName}}에게 못다했던 말이 있었나요? 
