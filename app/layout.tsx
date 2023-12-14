@@ -1,4 +1,3 @@
-import { Header } from '@components/header';
 import './globals.css';
 import { AuthSession } from 'components/common/auth/AuthSession';
 import { jua } from 'utils/fonts';
@@ -20,10 +19,9 @@ export default function RootLayout({ children }: RootLayoutProps) {
         <div id="modal" />
         <AuthSession>
           <QueryProvider>
-            <main className="mx-auto max-w-[500px]">
-              <Header />
+            <main className="mx-auto max-w-[500px] h-screen">
               {children}
-              <div className="absolute right-0 bottom-0 h-full w-[calc(50%-250px)] bg-white" />
+              <div className="absolute right-0 bottom-0 h-screen w-[calc(50%-250px)] bg-white" />
             </main>
           </QueryProvider>
         </AuthSession>

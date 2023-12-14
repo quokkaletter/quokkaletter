@@ -30,7 +30,7 @@ export const Header: React.FC = () => {
         animate={isNavVisible ? 'opened' : 'closed'}
         exit="closed"
         variants={navVariants}
-        className="bg-[#588251]/50 w-[80%] h-screen absolute right-0 top-[48px]"
+        className="bg-[#588251]/50 w-[80%] absolute right-0 top-[48px] h-screen"
       >
         <Nav />
       </motion.nav>
