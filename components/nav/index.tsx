@@ -1,7 +1,7 @@
 'use client';
 
 import { KakaoLogoutMenuItem } from '@components/nav/NavItems/KakaoLogoutMenuItem';
-import { LinkClipBoardMenuItem } from './NavItems/LinkClipBoardMenuItem';
+import { LinkClipBoardMenuItem } from '@components/nav/NavItems/LinkClipBoardMenuItem';
 import { useSession } from 'next-auth/react';
 
 export const Nav = () => {

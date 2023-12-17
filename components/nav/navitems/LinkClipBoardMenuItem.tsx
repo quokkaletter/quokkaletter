@@ -3,18 +3,35 @@
 import React from 'react';
 import { ArrowTopRightIcon } from '@radix-ui/react-icons';
 import { Separator } from '@/components/ui/separator';
+import { useSession } from 'next-auth/react';
 import { toast } from 'sonner';
 
-//TODO : userId 데이터 연동 이후 제거 예정
-const USER_ID = 'my-id';
-
 export const LinkClipBoardMenuItem = () => {
-  const handleCopyMyLink = () => {
-    const myLink = `/dashboard/${USER_ID}`;
+  const { data: session } = useSession();
 
-    navigator.clipboard.writeText(myLink);
+  const handleCopyMyLink = async () => {
+    const myLink = `${process.env.NEXT_PUBLIC_QUOKKA_LETTER_URL}/dashboard/${session.user.id}`;
 
-    toast.success('링크가 복사되었어요!');
+    if (
+      'maxTouchPoints' in navigator &&
+      navigator.maxTouchPoints > 0 &&
+      navigator.share
+    ) {
+      navigator
+        .share({
+          text: myLink,
+        })
+        .then(() => toast.success('링크가 성공적으로 공유되었습니다.'))
+        .catch(() => {
+          navigator.clipboard.writeText(myLink);
+
+          toast.success('링크가 클립보드에 복사되었어요.');
+        });
+    } else {
+      await navigator.clipboard.writeText(myLink);
+
+      toast.success('링크가 클립보드에 복사되었어요.');
+    }
   };
 
   return (
