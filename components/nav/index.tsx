@@ -1,4 +1,4 @@
-import { KakaoLoginMenuItem } from '@components/nav/navitems/KakaoLoginMenuItem';
+import { KakaoLoginMenuItem } from '@components/nav/NavItems/KakaoLoginMenuItem';
 
 export const Nav = () => {
   return (
