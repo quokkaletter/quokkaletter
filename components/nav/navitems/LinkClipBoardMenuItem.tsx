@@ -3,14 +3,14 @@
 import React from 'react';
 import { ArrowTopRightIcon } from '@radix-ui/react-icons';
 import { Separator } from '@/components/ui/separator';
+import { useSession } from 'next-auth/react';
 import { toast } from 'sonner';
 
-//TODO : userId 데이터 연동 이후 제거 예정
-const USER_ID = 'my-id';
-
 export const LinkClipBoardMenuItem = () => {
+  const { data: session } = useSession();
+
   const handleCopyMyLink = async () => {
-    const myLink = `/dashboard/${USER_ID}`;
+    const myLink = `${process.env.NEXT_PUBLIC_QUOKKA_LETTER_URL}/dashboard/${session.user.id}`;
 
     if (
       'maxTouchPoints' in navigator &&
