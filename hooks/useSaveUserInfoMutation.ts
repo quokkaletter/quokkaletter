@@ -1,6 +1,7 @@
 import { useMutation, useQueryClient } from '@tanstack/react-query';
 import { userManagerKeys } from 'lib/query';
 import { toast } from 'sonner';
+import { useRouter } from 'next/navigation';
 
 const saveUserInfo = async ({ nickname, userId }: UserInfo) => {
   const res = await fetch('/api/nickname', {
@@ -10,7 +11,7 @@ const saveUserInfo = async ({ nickname, userId }: UserInfo) => {
       // TODO: token
       // authorization: `Bearer ${token}`,
     },
-    body: JSON.stringify({ nickname }),
+    body: JSON.stringify({ nickname, userId }),
   });
 
   if (!res.ok) {
@@ -27,11 +28,14 @@ type UserInfo = {
 
 export const useSaveUserInfoMutation = () => {
   const queryClient = useQueryClient();
+  const router = useRouter();
   const { mutate } = useMutation(
     ({ nickname, userId }: UserInfo) => saveUserInfo({ nickname, userId }),
     {
       onSuccess: () => {
         toast.success('닉네임을 저장했어요!');
+        router.push('/');
+
         return queryClient.invalidateQueries(userManagerKeys.user);
       },
     },

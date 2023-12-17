@@ -5,31 +5,28 @@ import { getServerSession } from 'next-auth';
 import { authOptions } from 'lib/auth';
 import { redirect } from 'next/navigation';
 
-// const toRedirect = async (userId: string) => {
-//   const res = await fetch(`${process.env.NEXTAUTH_URL}/api/redirect`, {
-//     method: 'POST',
-//     body: JSON.stringify({
-//       userId,
-//     }),
-//   });
+const toRedirect = async (userId: string) => {
+  const res = await fetch(`${process.env.NEXTAUTH_URL}/api/redirect`, {
+    method: 'POST',
+    body: JSON.stringify({
+      userId,
+    }),
+  });
 
-//   if (!res.ok) {
-//     throw new Error('redirect하기 위한 정보를 가져오는데 실패했어요!');
-//   }
+  if (!res.ok) {
+    throw new Error('redirect하기 위한 정보를 가져오는데 실패했어요!');
+  }
 
-//   return res.json();
-// };
+  return res.json();
+};
 
 export default async function Home() {
   const session = await getServerSession(authOptions);
 
   if (session) {
-    // const to = await toRedirect(session.user.id);
-    const userId = 'test';
+    const to = await toRedirect(session.user.id);
 
-    return redirect(`/dashboard/${userId}`);
-
-    // return redirect(to.redirect);
+    return redirect(to.redirect);
   }
 
   return (
