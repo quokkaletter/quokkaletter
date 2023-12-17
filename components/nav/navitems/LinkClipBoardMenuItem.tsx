@@ -9,12 +9,29 @@ import { toast } from 'sonner';
 const USER_ID = 'my-id';
 
 export const LinkClipBoardMenuItem = () => {
-  const handleCopyMyLink = () => {
+  const handleCopyMyLink = async () => {
     const myLink = `/dashboard/${USER_ID}`;
 
-    navigator.clipboard.writeText(myLink);
+    if (
+      'maxTouchPoints' in navigator &&
+      navigator.maxTouchPoints > 0 &&
+      navigator.share
+    ) {
+      navigator
+        .share({
+          text: myLink,
+        })
+        .then(() => toast.success('링크가 성공적으로 공유되었습니다.'))
+        .catch(() => {
+          navigator.clipboard.writeText(myLink);
 
-    toast.success('링크가 복사되었어요!');
+          toast.success('링크가 클립보드에 복사되었어요.');
+        });
+    } else {
+      await navigator.clipboard.writeText(myLink);
+
+      toast.success('링크가 클립보드에 복사되었어요.');
+    }
   };
 
   return (
