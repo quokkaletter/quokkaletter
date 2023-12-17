@@ -21,12 +21,7 @@ export const LinkClipBoardMenuItem = () => {
         .share({
           text: myLink,
         })
-        .then(() => toast.success('링크가 성공적으로 공유되었습니다.'))
-        .catch(() => {
-          navigator.clipboard.writeText(myLink);
-
-          toast.success('링크가 클립보드에 복사되었어요.');
-        });
+        .then(() => toast.success('링크가 성공적으로 공유되었습니다.'));
     } else {
       await navigator.clipboard.writeText(myLink);
 
