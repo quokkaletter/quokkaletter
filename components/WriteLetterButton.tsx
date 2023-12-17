@@ -9,7 +9,10 @@ export const WriteLetterButton = () => {
 
   return (
     <>
-      <Button variant="secondary" onClick={() => setIsModalVisible(true)}>
+      <Button
+        className="bg-[#D9D9D9] text-primary py-2 px-4"
+        onClick={() => setIsModalVisible(true)}
+      >
         쿼카레터 쓰러가기
       </Button>
       <WriteLetterModal

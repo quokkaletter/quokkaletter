@@ -1,26 +1,27 @@
-import { LoginOrJoinButton } from '@components/LoginOrJoinButton';
+import { WriteLetterButton } from '@components/WriteLetterButton';
+import { Header } from '@components/header';
 import QuokkaImage from '@public/images/quokka.svg';
 import Image from 'next/image';
 import { getServerSession } from 'next-auth';
-import { authOptions } from 'lib/auth';
 import { redirect } from 'next/navigation';
+import { authOptions } from 'lib/auth';
 
-export default async function Home() {
+export default async function DashBoard() {
   const session = await getServerSession(authOptions);
 
-  if (session) return redirect('/dashboard');
+  if (!session) return redirect('/');
 
   return (
     <div className="overflow-hidden h-full">
-      <div className="flex justify-center  flex-col items-center h-screen bg-green">
-        {/* TODO : 로그인 전 쿼카용 이미지로 교체 필요 */}
+      <Header />
+      <div className="flex justify-center  flex-col items-center bg-green h-[calc(100vh-48px)]">
         <Image
           src={QuokkaImage.src}
           alt="quokka logo"
           width={160}
           height={160}
         />
-        <LoginOrJoinButton />
+        <WriteLetterButton />
       </div>
     </div>
   );
