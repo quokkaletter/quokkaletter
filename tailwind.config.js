@@ -39,7 +39,7 @@ module.exports = {
           foreground: 'hsl(var(--green-foreground))',
         },
         orange: {
-          DEFAULT: 'hsl(var(--primary))',
+          DEFAULT: 'hsl(var(--orange))',
           foreground: 'hsl(var(--orange-foreground))',
         },
         yellow: {
