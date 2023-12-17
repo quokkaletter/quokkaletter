@@ -5,10 +5,13 @@ import { getServerSession } from 'next-auth';
 import { authOptions } from 'lib/auth';
 import { redirect } from 'next/navigation';
 
+// user id data 연동 이후 제거 예정
+const USER_ID = 'my-id';
+
 export default async function Home() {
   const session = await getServerSession(authOptions);
 
-  if (session) return redirect('/dashboard');
+  if (session) return redirect(`/dashboard/${USER_ID}`);
 
   return (
     <div className="overflow-hidden h-full">
