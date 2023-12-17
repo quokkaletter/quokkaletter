@@ -43,8 +43,6 @@ export const authOptions: NextAuthOptions = {
         session.user.accessToken = token.accessToken as string;
       }
 
-      console.log('결과 session', session);
-
       return session;
     },
   },

@@ -5,13 +5,29 @@ import { getServerSession } from 'next-auth';
 import { authOptions } from 'lib/auth';
 import { redirect } from 'next/navigation';
 
-// user id data 연동 이후 제거 예정
-const USER_ID = 'my-id';
+const toRedirect = async (userId: string) => {
+  const res = await fetch(`${process.env.NEXTAUTH_URL}/api/redirect`, {
+    method: 'POST',
+    body: JSON.stringify({
+      userId,
+    }),
+  });
+
+  if (!res.ok) {
+    throw new Error('redirect하기 위한 정보를 가져오는데 실패했어요!');
+  }
+
+  return res.json();
+};
 
 export default async function Home() {
   const session = await getServerSession(authOptions);
 
-  if (session) return redirect(`/dashboard/${USER_ID}`);
+  if (session) {
+    const to = await toRedirect(session.user.id);
+
+    return redirect(to.redirect);
+  }
 
   return (
     <div className="overflow-hidden h-full">
