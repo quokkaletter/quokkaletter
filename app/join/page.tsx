@@ -2,8 +2,12 @@
 
 import React, { useState } from 'react';
 import { useSaveUserInfoMutation } from 'hooks/useSaveUserInfoMutation';
+import { useSession } from 'next-auth/react';
 
 const Join: React.FC = () => {
+  const { data: session } = useSession();
+  const userId = session?.user.id;
+
   const [nickname, setNickname] = useState('');
   const saveUserInfo = useSaveUserInfoMutation();
 
@@ -13,7 +17,7 @@ const Join: React.FC = () => {
 
   const handleSubmit = (event: React.FormEvent) => {
     event.preventDefault();
-    saveUserInfo({ nickname });
+    saveUserInfo({ nickname, userId });
   };
 
   return (
