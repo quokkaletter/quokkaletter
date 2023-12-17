@@ -1,6 +1,5 @@
-'use client';
-
 import { Modal } from 'components/modal/';
+
 import { useState, ChangeEvent } from 'react';
 import { Textarea } from '@/components/ui/textarea';
 
@@ -20,13 +19,13 @@ export const WriteLetterModal = ({
   };
 
   if (!isModalVisible) return null;
-
   return (
     <>
       <Modal onClose={closeModal} visible={isModalVisible}>
-        <div className="modalPosition bg-white p-10 rounded-md">
+        <div className="modalPosition bg-white p-8 rounded-md w-[90%] max-w-[480px] max-h-[500px] h-[60%]">
           <h1>편지를 쓰는 모달입니다.</h1>
           <Textarea
+            className="w-full h-full resize-none"
             onChange={handleLetterChange}
             value={letter}
             placeholder="평소에 {{userName}}에게 못다했던 말이 있었나요? 
