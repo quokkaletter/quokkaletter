@@ -13,7 +13,10 @@ export async function GET(
     doc.data(),
   );
 
-  return NextResponse.json({
-    letters: lettersByWriterId,
-  });
+  return NextResponse.json(
+    {
+      letters: lettersByWriterId,
+    },
+    { status: 200, statusText: 'success' },
+  );
 }
