@@ -10,6 +10,7 @@ export async function GET(
     .doc(params.userId)
     .get();
   const user = userSnapshot.data();
+  // TODO: nickname이 없을 때 처리 추가
   const nickname = user.nickname;
 
   return NextResponse.json(
