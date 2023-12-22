@@ -18,7 +18,8 @@ export const WriteLetterModal = ({
   closeModal,
   isModalVisible,
 }: WriteLetterModalProps) => {
-  const { data: { user } = {} } = useSession();
+  const { data: session } = useSession();
+  const userId = session?.user?.id;
   const pathname = usePathname();
   const recipientId = pathname.match(/\/dashboard\/([a-zA-Z0-9]+)/)[1];
   const [letter, setLetter] = useState('');
@@ -33,7 +34,7 @@ export const WriteLetterModal = ({
       {
         method: 'POST',
         body: JSON.stringify({
-          userId: user?.id,
+          userId,
           recipientId,
           contents: letter,
         }),
