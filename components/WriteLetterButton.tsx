@@ -8,13 +8,14 @@ import { usePathname } from 'next/navigation';
 import { useGetNicknameQuery } from '@hooks/useGetNicknameQuery';
 
 export const WriteLetterButton = () => {
-  const { data: { user } = {} } = useSession();
+  const { data: session } = useSession();
+  const userId = session?.user?.id;
   const pathname = usePathname();
   const recipientId = pathname.match(/\/dashboard\/([a-zA-Z0-9]+)/)[1];
   const { closeModal, setIsModalVisible, isModalVisible } = useModal();
-  const { nickname } = useGetNicknameQuery({ userId: user?.id });
+  const { nickname } = useGetNicknameQuery({ userId });
 
-  if (user?.id === recipientId) {
+  if (userId === recipientId) {
     return <div style={{ color: 'white' }}>{nickname.data}의 쿼카레터</div>;
   }
 
