@@ -19,7 +19,12 @@ export default function RootLayout({ children }: RootLayoutProps) {
       <body className={`${jua.className}`}>
         <div id="modal" />
         <AuthSession>
-          <Toaster position="top-center" />
+          <Toaster
+            toastOptions={{
+              duration: 3000,
+            }}
+            position="top-center"
+          />
           <QueryProvider>
             <main className="mx-auto max-w-[600px] h-screen">
               {children}
