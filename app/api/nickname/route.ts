@@ -7,5 +7,8 @@ export async function POST(req: Request) {
     nickname,
   });
 
-  return NextResponse.json({ message: 'success', nickname });
+  return NextResponse.json(
+    { nickname },
+    { status: 201, statusText: 'success' },
+  );
 }
