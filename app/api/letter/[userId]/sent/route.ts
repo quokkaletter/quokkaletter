@@ -5,6 +5,14 @@ export async function GET(
   _: unknown,
   { params }: { params: { userId: string } },
 ) {
+  const writerSnapshot = await firebaseApp
+    .collection('users')
+    .doc(params.userId)
+    .get();
+  const writer = writerSnapshot.data();
+  if (writer === undefined) {
+    throw new Error(`Cannot find user. userId was <<${params.userId}>>`);
+  }
   const lettersByWriterIdSnapshot = await firebaseApp
     .collection('letters')
     .where('writerId', '==', params.userId)

@@ -10,6 +10,9 @@ export async function GET(
     .doc(params.userId)
     .get();
   const user = userSnapshot.data();
+  if (user === undefined) {
+    throw new Error(`Cannot find user. userId was <<${params.userId}>>`);
+  }
   // TODO: nickname이 없을 때 처리 추가
   const nickname = user.nickname;
 
