@@ -5,6 +5,7 @@ import DashboardBackground from 'public/images/dashboard-background.png';
 import { getServerSession } from 'next-auth';
 import { redirect } from 'next/navigation';
 import { authOptions } from 'lib/auth';
+import { LetterViewerButton } from '@components/LetterViewerButton';
 
 export default async function DashBoard() {
   const session = await getServerSession(authOptions);
@@ -25,6 +26,7 @@ export default async function DashBoard() {
           }}
         />
         <WriteLetterButton />
+        <LetterViewerButton />
       </div>
     </div>
   );

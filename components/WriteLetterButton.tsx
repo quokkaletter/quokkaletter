@@ -11,8 +11,13 @@ export const WriteLetterButton = () => {
   const userId = session?.user?.id;
   const pathname = usePathname();
   const recipientId = pathname.match(/\/dashboard\/([a-zA-Z0-9]+)/)[1];
-  const { closeModal, setIsModalVisible, isModalVisible } = useModal();
+  const { closeModal, isModalVisible, openModal } = useModal();
+  const { nickname } = useGetNicknameQuery({ userId });
 
+  /**
+   * @description
+   * 쿼카레터는 자신에게 쿼카레터를 쓸 수 없습니다.
+   */
   if (userId === recipientId) {
     return null;
   }
@@ -21,8 +26,8 @@ export const WriteLetterButton = () => {
     <>
       {/* TODO: 배경 이미지 교체 이후 위치 조정 필요 */}
       <Button
-        className="absolute top-20 left-1/2 transform -translate-x-1/2 bg-[#D9D9D9] text-primary py-2 px-4"
-        onClick={() => setIsModalVisible(true)}
+        className="bg-[#D9D9D9] text-primary py-2 px-4"
+        onClick={() => openModal()}
       >
         쿼카레터 쓰러가기
       </Button>
