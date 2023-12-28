@@ -1,7 +1,7 @@
 import { WriteLetterButton } from '@components/WriteLetterButton';
 import { Header } from '@components/header';
-import QuokkaImage from '@public/images/quokka.svg';
-import Image from 'next/image';
+import DashboardBackground from '@public/images/dashboard-background.png';
+
 import { getServerSession } from 'next-auth';
 import { redirect } from 'next/navigation';
 import { authOptions } from 'lib/auth';
@@ -14,12 +14,15 @@ export default async function DashBoard() {
   return (
     <div className="overflow-hidden h-full">
       <Header />
-      <div className="flex justify-center  flex-col items-center bg-green h-[calc(100vh-48px)]">
-        <Image
-          src={QuokkaImage.src}
-          alt="quokka logo"
-          width={160}
-          height={160}
+      <div className="flex justify-center flex-col items-center h-[calc(100vh-48px)]">
+        <img
+          src={DashboardBackground.src}
+          alt="대쉬보드 배경"
+          style={{
+            width: '100%',
+            height: '100%',
+            objectFit: 'cover',
+          }}
         />
         <WriteLetterButton />
       </div>
