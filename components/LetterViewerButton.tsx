@@ -1,8 +1,8 @@
 'use client';
 
-import { Button } from '@/components/ui/button';
-import { useModal } from '@hooks/useModal';
-import { ViewerLetterModal } from '@components/LetterViewerModal';
+import { Button } from 'components/ui/button';
+import { useModal } from 'hooks/useModal';
+import { ViewerLetterModal } from 'components/LetterViewerModal';
 
 export const LetterViewerButton = () => {
   const { openModal, closeModal, isModalVisible } = useModal();

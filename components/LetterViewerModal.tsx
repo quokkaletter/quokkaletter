@@ -4,9 +4,9 @@ import { Lock } from 'lucide-react';
 
 import { Modal } from 'components/modal/';
 
-import { Label } from '@/components/ui/label';
+import { Label } from 'components/ui/label';
 import { useAllGetLetterQuery } from 'hooks/useAllGetLetterQuery';
-import { SwiperWrapper } from './common/swiper';
+import { SwiperWrapper } from 'components/common/swiper';
 
 interface ViewerLetterModalProps {
   closeModal: () => void;

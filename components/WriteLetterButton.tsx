@@ -12,7 +12,6 @@ export const WriteLetterButton = () => {
   const pathname = usePathname();
   const recipientId = pathname.match(/\/dashboard\/([a-zA-Z0-9]+)/)[1];
   const { closeModal, isModalVisible, openModal } = useModal();
-  const { nickname } = useGetNicknameQuery({ userId });
 
   /**
    * @description
@@ -26,7 +25,7 @@ export const WriteLetterButton = () => {
     <>
       {/* TODO: 배경 이미지 교체 이후 위치 조정 필요 */}
       <Button
-        className="bg-[#D9D9D9] text-primary py-2 px-4"
+        className="absolute top-20 left-1/2 transform -translate-x-1/2 bg-[#D9D9D9] text-primary py-2 px-4"
         onClick={() => openModal()}
       >
         쿼카레터 쓰러가기
