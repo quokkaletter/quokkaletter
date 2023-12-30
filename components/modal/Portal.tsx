@@ -3,10 +3,10 @@
 import ReactDOM from 'react-dom';
 import { isBrowser } from 'utils/isBrowser';
 
-interface PortalProps {
+type PortalProps = {
   children: React.ReactNode;
   selector: string;
-}
+};
 
 const Portal = ({ children, selector }: PortalProps) => {
   const element = isBrowser() && document.getElementById(selector);
