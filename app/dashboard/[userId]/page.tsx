@@ -1,6 +1,6 @@
-import { WriteLetterButton } from '@components/WriteLetterButton';
-import { Header } from '@components/header';
-import DashboardBackground from '@public/images/dashboard-background.png';
+import { WriteLetterButton } from 'components/WriteLetterButton';
+import { Header } from 'components/header';
+import DashboardBackground from 'public/images/dashboard-background.png';
 
 import { getServerSession } from 'next-auth';
 import { redirect } from 'next/navigation';

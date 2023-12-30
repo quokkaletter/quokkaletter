@@ -1,5 +1,5 @@
-import { LoginOrJoinButton } from '@components/LoginOrJoinButton';
-import QuokkaImage from '@public/images/quokka.svg';
+import { LoginOrJoinButton } from 'components/LoginOrJoinButton';
+import QuokkaImage from 'public/images/quokka.svg';
 import Image from 'next/image';
 import { getServerSession } from 'next-auth';
 import { authOptions } from 'lib/auth';
