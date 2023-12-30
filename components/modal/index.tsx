@@ -1,11 +1,11 @@
 import Portal from 'components/modal/Portal';
 import { useEffect } from 'react';
 
-interface ModalProps {
+type ModalProps = {
   children: React.ReactNode;
   onClose: () => void;
   visible: boolean;
-}
+};
 
 export const Modal = ({ onClose, visible, children }: ModalProps) => {
   const onMaskClick = (e: React.MouseEvent<HTMLElement>) => {

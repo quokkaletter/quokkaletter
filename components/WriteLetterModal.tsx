@@ -2,11 +2,11 @@ import { EnvelopeClosedIcon } from '@radix-ui/react-icons';
 
 import { Modal } from 'components/modal/';
 
-import { Button } from '@/components/ui/button';
+import { Button } from 'components/ui/button';
 import { useState, ChangeEvent } from 'react';
-import { Textarea } from '@/components/ui/textarea';
-import { Input } from '@/components/ui/input';
-import { Label } from '@/components/ui/label';
+import { Textarea } from 'components/ui/textarea';
+import { Input } from 'components/ui/input';
+import { Label } from 'components/ui/label';
 import { useSession } from 'next-auth/react';
 import { usePathname } from 'next/navigation';
 import { toast } from 'sonner';

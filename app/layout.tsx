@@ -1,7 +1,7 @@
 import './globals.css';
 import { AuthSession } from 'components/common/auth/AuthSession';
 import { jua } from 'utils/fonts';
-import QueryProvider from '@components/common/query/QueryProvider';
+import QueryProvider from 'components/common/query/QueryProvider';
 import { Toaster } from 'sonner';
 
 export const metadata = {
