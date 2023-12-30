@@ -1,4 +1,3 @@
-import { Button } from '@/components/ui/button';
 import { Children, useEffect, useRef } from 'react';
 import { SwiperContainer } from 'swiper/element';
 import { register } from 'swiper/element/bundle';

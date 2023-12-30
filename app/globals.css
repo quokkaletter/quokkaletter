@@ -127,10 +127,12 @@
 
 .swiper-button-prev {
   left: 10px;
+  z-index: 1;
 }
 
 .swiper-button-next {
   right: 10px;
+  z-index: 1;
 }
 
 .swiper-button:hover {
