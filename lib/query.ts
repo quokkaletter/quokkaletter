@@ -5,3 +5,7 @@ export const userManagerKeys = {
 export const nicknameManagerKeys = {
   nickname: ['nickname'] as const,
 };
+
+export const letterManagerKeys = {
+  letters: ['letters'] as const,
+};
