@@ -5,7 +5,8 @@ import DashboardBackground from 'public/images/dashboard-background.png';
 import { getServerSession } from 'next-auth';
 import { redirect } from 'next/navigation';
 import { authOptions } from 'lib/auth';
-import { LetterViewerButton } from '@components/LetterViewerButton';
+import { LetterViewerButton } from 'components/LetterViewerButton';
+import { CountdownTimer } from 'components/duration';
 
 export default async function DashBoard() {
   const session = await getServerSession(authOptions);
@@ -25,6 +26,8 @@ export default async function DashBoard() {
             objectFit: 'cover',
           }}
         />
+        {/* TODO: 임의로 Date */}
+        <CountdownTimer targetDate={new Date('2024-01-10')} />
         <WriteLetterButton />
         <LetterViewerButton />
       </div>
