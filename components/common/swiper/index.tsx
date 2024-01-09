@@ -33,7 +33,12 @@ export const SwiperContainerComp: React.FC<SwiperContainerProps> = ({
     if (!swiperRef.current) return;
     const swiperEl = swiperRef.current;
 
-    const swiperParams = {};
+    const swiperParams = {
+      pagination: {
+        el: '.swiper-pagination',
+        type: 'fraction',
+      },
+    };
 
     Object.assign(swiperEl, swiperParams);
 

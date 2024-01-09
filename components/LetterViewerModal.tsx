@@ -47,12 +47,14 @@ export const Letter: React.FC<LetterProps> = ({
   key,
 }) => {
   if (isVisible) {
-    <div key={key} className="flex flex-col items-center justify-center">
-      <Label className="text-2xl absolute top-0 left-10">
-        {anonymousNickname}
-      </Label>
-      <Label>{contents}</Label>
-    </div>;
+    return (
+      <div key={key} className="flex flex-col items-center justify-center">
+        <Label className="text-2xl absolute top-0 left-10">
+          {anonymousNickname}
+        </Label>
+        <Label>{contents}</Label>
+      </div>
+    );
   }
 
   return (
