@@ -1,5 +1,9 @@
 export class Letter {
-  contents: string;
   writerId: string;
-  reciepientId: string;
+  recipientId: string;
+  contents: string;
+  anonymousNickname: string;
+  isVisible: false;
+  createdAt: Date;
+  updatedAt: Date;
 }
