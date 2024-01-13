@@ -146,3 +146,15 @@
   justify-content: center;
   align-items: center;
 }
+
+/* Letter background */
+.letter-bg {
+  width: 100%;
+  height: auto;
+  aspect-ratio: 598 / 708;
+  background-color: white;
+  background-image: url('/images/letter-bg.png');
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position: center bottom;
+}
