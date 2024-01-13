@@ -17,7 +17,7 @@ export const ViewerLetterModal: React.FC<ViewerLetterModalProps> = ({
   closeModal,
   isModalVisible,
 }) => {
-  const { letters } = useAllGetLetterQuery();
+  const { letters } = useAllGetLetterQuery({});
 
   if (letters.data)
     return (

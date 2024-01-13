@@ -9,6 +9,7 @@ import { useSession } from 'next-auth/react';
 import { usePathname } from 'next/navigation';
 import { toast } from 'sonner';
 import { useGetNicknameQuery } from '@hooks/useGetNicknameQuery';
+import { useAllGetLetterQuery } from '@hooks/useAllGetLetterQuery';
 
 type WriteLetterModalProps = {
   closeModal: () => void;
@@ -31,6 +32,7 @@ export const WriteLetterModal = ({
     userId: recipientId,
   });
   const recipientNickname = nickname.data;
+  const { letters } = useAllGetLetterQuery({ userId: recipientId });
 
   const handleLetterChange = (e: ChangeEvent<HTMLTextAreaElement>) => {
     setLetter(e.target.value);
@@ -59,6 +61,7 @@ export const WriteLetterModal = ({
       setLetter('');
       setNickName('');
       closeModal();
+      letters.refetch();
     } else {
       toast.error('편지 전송에 실패했습니다. 다시 시도해주세요.');
     }
