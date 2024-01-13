@@ -8,6 +8,7 @@ import { Label } from 'components/ui/label';
 import { useSession } from 'next-auth/react';
 import { usePathname } from 'next/navigation';
 import { toast } from 'sonner';
+import { useGetNicknameQuery } from '@hooks/useGetNicknameQuery';
 
 type WriteLetterModalProps = {
   closeModal: () => void;
@@ -26,6 +27,10 @@ export const WriteLetterModal = ({
   const [nickName, setNickName] = useState('');
   const letterRef = useRef(null);
   const [lineHeight, setLineHeight] = useState('64px'); // 초기 lineHeight 값
+  const { nickname } = useGetNicknameQuery({
+    userId: recipientId,
+  });
+  const recipientNickname = nickname.data;
 
   const handleLetterChange = (e: ChangeEvent<HTMLTextAreaElement>) => {
     setLetter(e.target.value);
@@ -106,10 +111,9 @@ export const WriteLetterModal = ({
             id="letter"
             onChange={handleLetterChange}
             value={letter}
-            className="letter-bg"
-            // TODO: userNickname으로 변경하기
-            // params로 userId를 빼와서 요청해야함
-            // placeholder={`평소에 {{userName}}에게 못다했던 말이 있었나요? 혹은 궁금했거나 하고 싶은 이야기가 있다면 편하게 남겨보아요!`}
+            // TODO: style 변경해주기
+            className="letter-bg placeholder:letter-bg text-xl resize-none w-full py-2 px-5 focus:outline-none"
+            placeholder={`평소에 '${recipientNickname}'에게 못다했던 말이 있었나요? 혹은 궁금했거나 하고 싶은 이야기가 있다면 편하게 남겨보아요!`}
           />
           <Button
             className={`w-full text-xl flex items-center justify-center ${buttonDynamicStyles}`}
