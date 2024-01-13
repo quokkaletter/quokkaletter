@@ -82,7 +82,7 @@ export async function POST(req: Request) {
     recipientId,
     contents,
     anonymousNickname,
-    isVisible: true,
+    isVisible: false,
     createdAt: operatedAt,
     updatedAt: operatedAt,
   });
