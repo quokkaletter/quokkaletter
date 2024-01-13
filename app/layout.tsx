@@ -3,6 +3,7 @@ import { AuthSession } from 'components/common/auth/AuthSession';
 import { jua } from 'utils/fonts';
 import QueryProvider from 'components/common/query/QueryProvider';
 import { Toaster } from 'sonner';
+import { Analytics } from '@components/analytics';
 
 export const metadata = {
   title: 'quokka letter',
@@ -17,6 +18,7 @@ export default function RootLayout({ children }: RootLayoutProps) {
   return (
     <html>
       <body className={`${jua.className}`}>
+        <Analytics />
         <div id="modal" />
         <AuthSession>
           <Toaster
