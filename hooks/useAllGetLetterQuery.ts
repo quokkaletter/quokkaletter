@@ -28,14 +28,18 @@ const getLetters = async ({ userId }: GetLettersParams) => {
   return letters;
 };
 
-export const useAllGetLetterQuery = () => {
+type useAllGetLetterQueryProps = {
+  userId: string | undefined;
+};
+
+export const useAllGetLetterQuery = ({ userId }: useAllGetLetterQueryProps) => {
   const { data: session } = useSession();
-  const userId = session?.user?.id;
+  const myId = session?.user?.id;
 
   const letters = useQuery<Letter[]>({
     queryKey: [...letterManagerKeys.letters],
-    enabled: !!userId,
-    queryFn: () => getLetters({ userId }),
+    enabled: !!(userId ?? myId),
+    queryFn: () => getLetters({ userId: userId ?? myId }),
   });
 
   return {
