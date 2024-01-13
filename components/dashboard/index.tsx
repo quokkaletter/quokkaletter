@@ -22,6 +22,7 @@ export const Dashboard = () => {
         src={DashboardTree.src}
         alt="대쉬보드 배경"
         style={{
+          zIndex: 1,
           position: 'absolute',
           width: '500px',
           height: '410px',
@@ -42,6 +43,7 @@ export const Dashboard = () => {
       />
       <div
         style={{
+          zIndex: 1,
           position: 'absolute',
           bottom: '230px',
           height: '300px',

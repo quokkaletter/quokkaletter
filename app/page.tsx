@@ -32,7 +32,6 @@ export default async function Home() {
   return (
     <div className="overflow-hidden h-full">
       <div className="flex justify-center  flex-col items-center h-screen bg-green">
-        {/* TODO : 로그인 전 쿼카용 이미지로 교체 필요 */}
         <Image
           src={QuokkaImage.src}
           alt="quokka logo"
