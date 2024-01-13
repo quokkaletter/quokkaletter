@@ -3,12 +3,14 @@ import { SwiperContainer } from 'swiper/element';
 import { register } from 'swiper/element/bundle';
 import { ArrowRightCircle, ArrowLeftCircle } from 'lucide-react';
 
-type SwiperWrapperProps = {
+type DashboardSwiperWrapperProps = {
   children: React.ReactNode;
   className?: string;
 };
 
-export const SwiperWrapper: React.FC<SwiperWrapperProps> = ({ children }) => {
+export const DashboardSwiperWrapper: React.FC<DashboardSwiperWrapperProps> = ({
+  children,
+}) => {
   return (
     <>
       <SwiperContainerComp>{children}</SwiperContainerComp>
@@ -18,19 +20,18 @@ export const SwiperWrapper: React.FC<SwiperWrapperProps> = ({ children }) => {
 
 type SwiperContainerProps = {
   children: React.ReactNode;
-  //   swiperOptions: any;
 };
 
 export const SwiperContainerComp: React.FC<SwiperContainerProps> = ({
   children,
-  //   ...swiperOptions
 }) => {
   const swiperRef = useRef<SwiperContainer>(null);
 
   useEffect(() => {
     register();
 
-    if (!swiperRef.current) return;
+    if (!swiperRef?.current) return null;
+
     const swiperEl = swiperRef.current;
 
     const swiperParams = {
@@ -43,7 +44,7 @@ export const SwiperContainerComp: React.FC<SwiperContainerProps> = ({
     Object.assign(swiperEl, swiperParams);
 
     swiperEl.initialize();
-  }, []);
+  }, [swiperRef]);
 
   return (
     <section className="h-full">
@@ -70,12 +71,13 @@ export const SwiperContainerComp: React.FC<SwiperContainerProps> = ({
         ))}
       </swiper-container>
       <ArrowLeftCircle
-        className="swiper-button swiper-button-prev"
+        className="swiper-button left-[-40px] z-1"
         onClick={() => swiperRef?.current?.swiper.slidePrev()}
       />
       <ArrowRightCircle
-        className="swiper-button swiper-button-next"
+        className="swiper-button right-[-40px] z-1"
         onClick={() => {
+          console.log('hi');
           swiperRef?.current?.swiper.slideNext();
         }}
       />
