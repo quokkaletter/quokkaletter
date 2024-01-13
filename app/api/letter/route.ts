@@ -37,21 +37,31 @@ import { NextResponse } from 'next/server';
  *             schema:
  *               type: object
  *               properties:
- *                 writerId:
- *                   type: string
- *                 recipientId:
- *                   type: string
  *                 contents:
  *                   type: string
- *                 anonymousNickname:
+ *                 recipientId:
  *                   type: string
  *                 isVisible:
  *                   type: boolean
  *                   default: false
+ *                 writerId:
+ *                   type: string
+ *                 anonymousNickname:
+ *                   type: string
  *                 createdAt:
- *                   type: string
+ *                   type: object
+ *                   properties:
+ *                     _seconds:
+ *                       type: number
+ *                     _nanoseconds:
+ *                       type: number
  *                 updatedAt:
- *                   type: string
+ *                   type: object
+ *                   properties:
+ *                     _seconds:
+ *                       type: number
+ *                     _nanoseconds:
+ *                       type: number
  *       400:
  *         description: "클라이언트 측이 잘못된 요청을 보냈습니다."
  *       500:
