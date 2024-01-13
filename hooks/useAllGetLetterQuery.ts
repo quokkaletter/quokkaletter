@@ -38,8 +38,6 @@ export const useAllGetLetterQuery = () => {
     queryFn: () => getLetters({ userId }),
   });
 
-  console.log('letters', letters);
-
   return {
     letters,
   };
