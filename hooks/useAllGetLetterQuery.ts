@@ -29,7 +29,7 @@ const getLetters = async ({ userId }: GetLettersParams) => {
 };
 
 type useAllGetLetterQueryProps = {
-  userId: string | undefined;
+  userId?: string | undefined;
 };
 
 export const useAllGetLetterQuery = ({ userId }: useAllGetLetterQueryProps) => {
