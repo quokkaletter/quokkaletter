@@ -44,7 +44,7 @@ export const WriteLetterModal = ({
 
   const handleSendLetter = async () => {
     const res = await fetch(
-      `${process.env.NEXT_PUBLIC_NEXTAUTH_URL}/api/letter`,
+      `${process.env.NEXT_PUBLIC_QUOKKA_LETTER_URL}/api/letter`,
       {
         method: 'POST',
         body: JSON.stringify({
