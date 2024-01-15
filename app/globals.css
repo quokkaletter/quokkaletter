@@ -158,3 +158,15 @@
   background-size: contain;
   background-position: center bottom;
 }
+
+/* Cloud */
+.cloud-image {
+  top: 20%;
+
+  width: 150px;
+  height: auto;
+  aspect-ratio: 493 / 360;
+  background-image: url('/images/cloud.png');
+  background-size: cover;
+  position: absolute;
+}
