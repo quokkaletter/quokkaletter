@@ -5,6 +5,7 @@ import { useModal } from 'hooks/useModal';
 import { ViewerLetterModal } from 'components/LetterViewerModal';
 import { useSession } from 'next-auth/react';
 import { usePathname } from 'next/navigation';
+import { Mail } from 'lucide-react';
 
 export const LetterViewerButton = () => {
   const { data: session } = useSession();
@@ -24,10 +25,15 @@ export const LetterViewerButton = () => {
   return (
     <>
       <Button
+        className="mt-3 inline-flex items-center gap-1"
         onClick={() => openModal()}
-        className="bg-[#D9D9D9] text-primary py-2 px-4 mt-6"
+        variant="button"
+        style={{
+          boxShadow: '1px 2px 2px 2px var(--yellow)',
+        }}
       >
         쿼카레터 보러가기
+        <Mail style={{ width: '15px', height: '15px', marginBottom: '1px' }} />
       </Button>
       <ViewerLetterModal
         closeModal={closeModal}
