@@ -26,6 +26,7 @@ export const SwiperContainerComp: React.FC<SwiperContainerProps> = ({
   children,
 }) => {
   const swiperRef = useRef<SwiperContainer>(null);
+  const showArrowIcon = (children as any)?.length > 1;
 
   useEffect(() => {
     register();
@@ -70,17 +71,20 @@ export const SwiperContainerComp: React.FC<SwiperContainerProps> = ({
           </swiper-slide>
         ))}
       </swiper-container>
-      <ArrowLeftCircle
-        className="swiper-button left-[-40px] z-1"
-        onClick={() => swiperRef?.current?.swiper.slidePrev()}
-      />
-      <ArrowRightCircle
-        className="swiper-button right-[-40px] z-1"
-        onClick={() => {
-          console.log('hi');
-          swiperRef?.current?.swiper.slideNext();
-        }}
-      />
+      {showArrowIcon && (
+        <>
+          <ArrowLeftCircle
+            className="swiper-button left-[-40px] z-1"
+            onClick={() => swiperRef?.current?.swiper.slidePrev()}
+          />
+          <ArrowRightCircle
+            className="swiper-button right-[-40px] z-1"
+            onClick={() => {
+              swiperRef?.current?.swiper.slideNext();
+            }}
+          />
+        </>
+      )}
     </section>
   );
 };
