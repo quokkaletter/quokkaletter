@@ -1,7 +1,7 @@
 import { Children, useEffect, useRef } from 'react';
 import { SwiperContainer } from 'swiper/element';
 import { register } from 'swiper/element/bundle';
-import { ArrowRightCircle, ArrowLeftCircle } from 'lucide-react';
+import { ChevronLeft, ChevronRight } from 'lucide-react';
 
 type DashboardSwiperWrapperProps = {
   children: React.ReactNode;
@@ -38,14 +38,14 @@ export const SwiperContainerComp: React.FC<SwiperContainerProps> = ({
     const swiperParams = {
       pagination: {
         el: '.swiper-pagination',
-        type: 'fraction',
+        type: 'scrollbar',
       },
     };
 
     Object.assign(swiperEl, swiperParams);
 
     swiperEl.initialize();
-  }, [swiperRef]);
+  }, [children, swiperRef]);
 
   return (
     <section className="h-full">
@@ -73,15 +73,13 @@ export const SwiperContainerComp: React.FC<SwiperContainerProps> = ({
       </swiper-container>
       {showArrowIcon && (
         <>
-          <ArrowLeftCircle
+          <ChevronLeft
             className="swiper-button left-[-40px] z-1"
             onClick={() => swiperRef?.current?.swiper.slidePrev()}
           />
-          <ArrowRightCircle
+          <ChevronRight
             className="swiper-button right-[-40px] z-1"
-            onClick={() => {
-              swiperRef?.current?.swiper.slideNext();
-            }}
+            onClick={() => swiperRef?.current?.swiper.slideNext()}
           />
         </>
       )}
