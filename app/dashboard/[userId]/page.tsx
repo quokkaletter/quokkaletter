@@ -21,7 +21,7 @@ export default async function DashBoard() {
       <Dashboard />
       <CloudAnimation />
 
-      <div className="flex flex-col h-[calc(100vh-48px)] p-2 bg-[#A5D8FF]">
+      <div className="h-[calc(100vh-48px)] p-2 bg-[#A5D8FF] text-right">
         <CountdownTimer targetDate={new Date('2024-02-10')} />
         <WriteLetterButton />
         <LetterViewerButton />

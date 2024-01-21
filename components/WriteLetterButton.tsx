@@ -5,6 +5,7 @@ import { useModal } from 'hooks/useModal';
 import { WriteLetterModal } from './WriteLetterModal';
 import { useSession } from 'next-auth/react';
 import { usePathname } from 'next/navigation';
+import { Pen } from 'lucide-react';
 
 export const WriteLetterButton = () => {
   const { data: session } = useSession();
@@ -24,10 +25,12 @@ export const WriteLetterButton = () => {
   return (
     <>
       <Button
-        className="bg-[#D9D9D9] text-primary py-2 px-4 mt-6"
+        className="mt-3 inline-flex items-center gap-1"
         onClick={() => openModal()}
+        variant="button"
       >
         쿼카레터 쓰러가기
+        <Pen style={{ width: '15px', height: '15px' }} />
       </Button>
       <WriteLetterModal
         closeModal={closeModal}
