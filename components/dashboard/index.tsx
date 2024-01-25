@@ -4,11 +4,17 @@ import DashboardTree from 'public/images/dashboard-tree.png';
 import { useAllGetLetterQuery } from 'hooks/useAllGetLetterQuery';
 import { usePathname } from 'next/navigation';
 import { DashboardSwiperWrapper } from './dashboardswiper';
+import { useGetNicknameQuery } from 'hooks/useGetNicknameQuery';
 
 export const Dashboard = () => {
   const pathname = usePathname();
   const userId = pathname.match(/\/dashboard\/([a-zA-Z0-9]+)/)[1];
   const { letters } = useAllGetLetterQuery({ userId });
+  const {
+    nickname: { data: nickname },
+  } = useGetNicknameQuery({
+    userId,
+  });
 
   const chunkSize = 6;
   const groupedLetters = Array.from(
@@ -18,9 +24,20 @@ export const Dashboard = () => {
 
   return (
     <div>
+      <div
+        className="absolute"
+        style={{
+          bottom: 'calc(100px + 405px)',
+          left: '50%',
+          transform: 'translateX(-50%)',
+          zIndex: 1,
+        }}
+      >
+        {nickname}
+      </div>
       <img
         src={DashboardTree.src}
-        alt="대쉬보드 배경"
+        alt="Dashboard Tree"
         style={{
           zIndex: 1,
           position: 'absolute',
@@ -33,7 +50,7 @@ export const Dashboard = () => {
       />
       <img
         src={DashboardGrass.src}
-        alt="대쉬보드 배경"
+        alt="Dashboard Grass"
         style={{
           position: 'absolute',
           bottom: 0,

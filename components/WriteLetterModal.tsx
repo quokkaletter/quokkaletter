@@ -114,7 +114,6 @@ export const WriteLetterModal = ({
             id="letter"
             onChange={handleLetterChange}
             value={letter}
-            // TODO: style 변경해주기
             className="letter-bg placeholder:letter-bg text-xl resize-none w-full py-2 px-5 focus:outline-none"
             placeholder={`평소에 '${recipientNickname}'에게 못다했던 말이 있었나요? 혹은 궁금했거나 하고 싶은 이야기가 있다면 편하게 남겨보아요!`}
           />
