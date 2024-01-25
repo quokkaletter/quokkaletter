@@ -1,10 +1,14 @@
 'use client';
 
 import { Lock } from 'lucide-react';
+import { useRef } from 'react';
+import { useDynamicLineHeight } from 'hooks/useDynamicLineHeight';
 import { Modal } from 'components/modal/';
 import { Label } from 'components/ui/label';
 import { useAllGetLetterQuery } from 'hooks/useAllGetLetterQuery';
+import { EnvelopeClosedIcon } from '@radix-ui/react-icons';
 import { SwiperWrapper } from 'components/common/swiper';
+import { Button } from 'components/ui/button';
 
 interface ViewerLetterModalProps {
   closeModal: () => void;
@@ -17,16 +21,25 @@ export const ViewerLetterModal: React.FC<ViewerLetterModalProps> = ({
 }) => {
   const { letters } = useAllGetLetterQuery({});
 
+  const letterRef = useRef(null);
+  const lineHeight = useDynamicLineHeight({
+    ref: letterRef,
+    isVisible: isModalVisible,
+  });
+
   if (letters.data)
     return (
       <Modal onClose={closeModal} visible={isModalVisible}>
-        <div className="modalPosition bg-white p-8 rounded-md w-[90%] max-w-[480px] max-h-[500px] h-[60%]">
-          <SwiperWrapper>
-            {letters.data.map((letter, key) => (
-              <Letter key={key} {...letter} />
-            ))}
-          </SwiperWrapper>
-        </div>
+        <SwiperWrapper>
+          {letters.data.map((letter, key) => (
+            <Letter
+              key={key}
+              {...letter}
+              lineHeight={lineHeight}
+              letterRef={letterRef}
+            />
+          ))}
+        </SwiperWrapper>
       </Modal>
     );
 };
@@ -36,21 +49,50 @@ type LetterProps = {
   anonymousNickname: string;
   isVisible: boolean;
   key: number;
+  lineHeight: string;
+  letterRef: React.RefObject<HTMLTextAreaElement>;
 };
 
 export const Letter: React.FC<LetterProps> = ({
   contents,
   anonymousNickname,
   isVisible,
-  key,
+  letterRef,
+  lineHeight,
 }) => {
+  const buttonDynamicStyles = 'bg-[#588251]/90 text-white';
+
   if (isVisible) {
     return (
-      <div key={key} className="flex flex-col items-center justify-center">
-        <Label className="text-2xl absolute top-0 left-10">
-          {anonymousNickname}
-        </Label>
-        <Label>{contents}</Label>
+      <div className="modalPosition bg-white w-[90%] max-w-[450px] min-h-[60%] max-h-[700px] rounded-lg">
+        <div className="flex justify-center items-center gap-2 p-2 relative">
+          <Label htmlFor="nickname" className="border-none border-b text-xl">
+            From:
+          </Label>
+          <input
+            id="nickname"
+            className="text-xl focus:outline-none p-2 w-full"
+            value={anonymousNickname}
+            readOnly
+          />
+        </div>
+        <textarea
+          ref={letterRef}
+          maxLength={300}
+          style={{
+            lineHeight: lineHeight,
+          }}
+          id="letter"
+          value={contents}
+          className="letter-bg placeholder:letter-bg text-xl resize-none w-full py-2 px-5 focus:outline-none"
+          readOnly
+        />
+        <Button
+          className={`w-full text-xl flex items-center justify-center ${buttonDynamicStyles}`}
+        >
+          확인
+          <EnvelopeClosedIcon className="ml-2" />
+        </Button>
       </div>
     );
   }
