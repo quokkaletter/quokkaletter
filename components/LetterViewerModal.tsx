@@ -37,6 +37,7 @@ export const ViewerLetterModal: React.FC<ViewerLetterModalProps> = ({
               {...letter}
               lineHeight={lineHeight}
               letterRef={letterRef}
+              closeModal={closeModal}
             />
           ))}
         </SwiperWrapper>
@@ -51,6 +52,7 @@ type LetterProps = {
   key: number;
   lineHeight: string;
   letterRef: React.RefObject<HTMLTextAreaElement>;
+  closeModal: () => void;
 };
 
 export const Letter: React.FC<LetterProps> = ({
@@ -59,6 +61,7 @@ export const Letter: React.FC<LetterProps> = ({
   isVisible,
   letterRef,
   lineHeight,
+  closeModal,
 }) => {
   const buttonDynamicStyles = 'bg-[#588251]/90 text-white';
 
@@ -88,6 +91,7 @@ export const Letter: React.FC<LetterProps> = ({
           readOnly
         />
         <Button
+          onClick={closeModal}
           className={`w-full text-xl flex items-center justify-center ${buttonDynamicStyles}`}
         >
           확인
