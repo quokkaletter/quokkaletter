@@ -51,7 +51,7 @@ export const Header: React.FC = () => {
         animate={isNavVisible ? 'opened' : 'closed'}
         exit="closed"
         variants={navVariants}
-        className="bg-[#588251]/50 w-[50%] absolute right-0 top-[48px] h-screen"
+        className="bg-[#588251]/50 w-[50%] absolute right-0 top-[48px] h-screen z-10"
         transition={{ duration: 0.3 }}
         ref={navRef}
       >
