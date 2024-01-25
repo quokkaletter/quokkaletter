@@ -1,15 +1,15 @@
 import { EnvelopeClosedIcon } from '@radix-ui/react-icons';
 
 import { Modal } from 'components/modal/';
-
+import { useDynamicLineHeight } from 'hooks/useDynamicLineHeight';
 import { Button } from 'components/ui/button';
-import { useState, useEffect, useRef, ChangeEvent } from 'react';
+import { useState, useRef, ChangeEvent } from 'react';
 import { Label } from 'components/ui/label';
 import { useSession } from 'next-auth/react';
 import { usePathname } from 'next/navigation';
 import { toast } from 'sonner';
-import { useGetNicknameQuery } from '@hooks/useGetNicknameQuery';
-import { useAllGetLetterQuery } from '@hooks/useAllGetLetterQuery';
+import { useGetNicknameQuery } from 'hooks/useGetNicknameQuery';
+import { useAllGetLetterQuery } from 'hooks/useAllGetLetterQuery';
 
 type WriteLetterModalProps = {
   closeModal: () => void;
@@ -26,13 +26,16 @@ export const WriteLetterModal = ({
   const recipientId = pathname.match(/\/dashboard\/([a-zA-Z0-9]+)/)[1];
   const [letter, setLetter] = useState('');
   const [nickName, setNickName] = useState('');
-  const letterRef = useRef(null);
-  const [lineHeight, setLineHeight] = useState('64px'); // 초기 lineHeight 값
   const { nickname } = useGetNicknameQuery({
     userId: recipientId,
   });
   const recipientNickname = nickname.data;
   const { letters } = useAllGetLetterQuery({ userId: recipientId });
+  const letterRef = useRef(null);
+  const lineHeight = useDynamicLineHeight({
+    ref: letterRef,
+    isVisible: isModalVisible,
+  });
 
   const handleLetterChange = (e: ChangeEvent<HTMLTextAreaElement>) => {
     setLetter(e.target.value);
@@ -72,22 +75,6 @@ export const WriteLetterModal = ({
     ? 'bg-gray-300 text-gray-500 cursor-not-allowed'
     : 'bg-[#588251]/90 text-white';
 
-  useEffect(() => {
-    const calculateLineHeight = () => {
-      if (letterRef.current) {
-        const width = letterRef.current.clientWidth;
-        const height = width * (708 / 598);
-        const newLineHeight = height / 11;
-
-        setLineHeight(`${newLineHeight}px`);
-      }
-    };
-
-    if (isModalVisible) {
-      calculateLineHeight();
-    }
-  }, [isModalVisible]);
-
   if (!isModalVisible) return null;
   return (
     <>
@@ -126,37 +113,6 @@ export const WriteLetterModal = ({
             <EnvelopeClosedIcon className="ml-2" />
           </Button>
         </div>
-
-        {/* <div className="flex flex-col modalPosition bg-white p-8 rounded-md w-[90%] max-w-[480px] max-h-[500px] h-[60%]">
-          <Textarea
-            id="letter"
-            className="w-full flex-1 resize-none"
-            onChange={handleLetterChange}
-            value={letter}
-            placeholder="평소에 {{userName}}에게 못다했던 말이 있었나요? 혹은 궁금했거나 하고 싶은 이야기가 있다면 편하게 남겨보아요!"
-          />
-          <Label htmlFor="nickname" className="w-60 mt-2 border-none border-b">
-            나의 닉네임
-          </Label>
-          <Input
-            id="nickname"
-            className="w-60"
-            value={nickName}
-            onChange={handleNickNameChange}
-            placeholder="나의 닉네임을 지정해주세요 :-)"
-          />
-          <Button
-            className={`w-full text-base flex items-center py-2 px-4 mt-4 ${
-              letter === '' || nickName === ''
-                ? 'bg-gray-300 text-gray-500'
-                : 'bg-[#588251]/90 text-white'
-            } ${letter === '' ? 'cursor-not-allowed' : ''}`}
-            onClick={handleSendLetter}
-            disabled={letter === ''}
-          >
-            편지 전송
-            <EnvelopeClosedIcon className="ml-2" />
-          </Button> */}
       </Modal>
     </>
   );
