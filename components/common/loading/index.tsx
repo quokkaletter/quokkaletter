@@ -8,8 +8,7 @@ export const LoadingIndicator = () => {
     <div className="w-screen h-screen bg-black/50 absolute modalPosition z-50">
       <motion.div
         className="flex justify-center items-center flex-col h-full w-full"
-        initial={{ opacity: 0, scale: 0.5 }}
-        animate={{ opacity: 1, scale: 1 }}
+        initial={{ opacity: 1, scale: 1 }}
         transition={{ duration: 1, ease: 'easeInOut' }}
       >
         <motion.img
