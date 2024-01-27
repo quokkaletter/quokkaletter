@@ -23,6 +23,8 @@ export const Dashboard = () => {
     (_, i) => letters?.data?.slice(i * chunkSize, i * chunkSize + chunkSize),
   );
 
+  console.log('letters', letters.isLoading);
+
   return (
     <div>
       <div
