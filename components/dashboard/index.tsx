@@ -1,6 +1,7 @@
 'use client';
 import DashboardGrass from 'public/images/dashboard-grass.png';
 import DashboardTree from 'public/images/dashboard-tree.png';
+import DashboardQuokka from 'public/images/dashboard-quokka.png';
 import { useAllGetLetterQuery } from 'hooks/useAllGetLetterQuery';
 import { usePathname } from 'next/navigation';
 import { DashboardSwiperWrapper } from './dashboardswiper';
@@ -56,6 +57,19 @@ export const Dashboard = () => {
           bottom: 0,
           width: '100%',
           height: '350px',
+        }}
+      />
+      <img
+        src={DashboardQuokka.src}
+        alt="Dashboard Quokka"
+        style={{
+          zIndex: 1,
+          position: 'absolute',
+          width: '6rem',
+          aspectRatio: '275/485',
+          bottom: '100px',
+          left: '80%',
+          transform: 'translateX(-50%)',
         }}
       />
       <div
