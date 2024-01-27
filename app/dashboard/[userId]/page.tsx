@@ -7,8 +7,7 @@ import { authOptions } from 'lib/auth';
 import { LetterViewerButton } from 'components/LetterViewerButton';
 import { CountdownTimer } from 'components/duration';
 import { CloudAnimation } from 'components/cloud';
-
-import { Dashboard } from '@components/dashboard';
+import { Dashboard } from 'components/dashboard';
 
 export default async function DashBoard() {
   const session = await getServerSession(authOptions);
@@ -18,6 +17,7 @@ export default async function DashBoard() {
   return (
     <div className="overflow-hidden h-full relative">
       <Header />
+
       <Dashboard />
       <CloudAnimation />
 

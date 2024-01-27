@@ -1,10 +1,13 @@
 'use client';
+
 import DashboardGrass from 'public/images/dashboard-grass.png';
 import DashboardTree from 'public/images/dashboard-tree.png';
+import DashboardQuokka from 'public/images/dashboard-quokka.png';
 import { useAllGetLetterQuery } from 'hooks/useAllGetLetterQuery';
 import { usePathname } from 'next/navigation';
-import { DashboardSwiperWrapper } from './dashboardswiper';
+import { DashboardSwiperWrapper } from 'components/dashboard/dashboardswiper';
 import { useGetNicknameQuery } from 'hooks/useGetNicknameQuery';
+import { LoadingIndicator } from '@components/common/loading';
 
 export const Dashboard = () => {
   const pathname = usePathname();
@@ -58,6 +61,19 @@ export const Dashboard = () => {
           height: '350px',
         }}
       />
+      <img
+        src={DashboardQuokka.src}
+        alt="Dashboard Quokka"
+        style={{
+          zIndex: 1,
+          position: 'absolute',
+          width: '6rem',
+          aspectRatio: '275/485',
+          bottom: '100px',
+          left: '80%',
+          transform: 'translateX(-50%)',
+        }}
+      />
       <div
         style={{
           zIndex: 1,
@@ -70,31 +86,35 @@ export const Dashboard = () => {
           padding: '5px',
         }}
       >
-        <DashboardSwiperWrapper>
-          {groupedLetters?.map((letters, index) => (
-            <div
-              key={index}
-              className="absolute grid grid-cols-2 grid-rows-3 gap-4 h-[240px]"
-            >
-              {letters?.map(({ anonymousNickname }, index) => {
-                return (
-                  <div
-                    key={index + anonymousNickname}
-                    className="flex flex-col justify-center items-center text-center"
-                  >
-                    <span className="text-white">{anonymousNickname}</span>
-                    <img
-                      src={`/images/mandarin_v${
-                        Math.floor(Math.random() * 2) + 1
-                      }.png`}
-                      className="w-12"
-                    />
-                  </div>
-                );
-              })}
-            </div>
-          ))}
-        </DashboardSwiperWrapper>
+        {letters.isLoading ? (
+          <LoadingIndicator />
+        ) : (
+          <DashboardSwiperWrapper>
+            {groupedLetters?.map((letters, index) => (
+              <div
+                key={index}
+                className="absolute grid grid-cols-2 grid-rows-3 gap-4 h-[240px]"
+              >
+                {letters?.map(({ anonymousNickname }, index) => {
+                  return (
+                    <div
+                      key={index + anonymousNickname}
+                      className="flex flex-col justify-center items-center text-center"
+                    >
+                      <span className="text-white">{anonymousNickname}</span>
+                      <img
+                        src={`/images/mandarin_v${
+                          Math.floor(Math.random() * 2) + 1
+                        }.png`}
+                        className="w-12"
+                      />
+                    </div>
+                  );
+                })}
+              </div>
+            ))}
+          </DashboardSwiperWrapper>
+        )}
       </div>
     </div>
   );
