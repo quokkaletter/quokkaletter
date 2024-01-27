@@ -74,7 +74,7 @@ export const Letter: React.FC<LetterProps> = ({
           </Label>
           <input
             id="nickname"
-            className="text-xl focus:outline-none p-2 w-full"
+            className="text-xl focus:outline-none p-2 w-full pointer-events-none"
             value={anonymousNickname}
             readOnly
           />
@@ -87,7 +87,7 @@ export const Letter: React.FC<LetterProps> = ({
           }}
           id="letter"
           value={contents}
-          className="letter-bg placeholder:letter-bg text-xl resize-none w-full py-2 px-5 focus:outline-none"
+          className="letter-bg placeholder:letter-bg text-xl resize-none w-full py-2 px-5 focus:outline-none pointer-events-none"
           readOnly
         />
         <Button
