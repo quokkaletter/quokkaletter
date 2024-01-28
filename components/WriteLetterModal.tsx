@@ -1,15 +1,14 @@
 import { EnvelopeClosedIcon } from '@radix-ui/react-icons';
-
 import { Modal } from 'components/modal/';
-import { useDynamicLineHeight } from 'hooks/useDynamicLineHeight';
 import { Button } from 'components/ui/button';
-import { useState, useRef, ChangeEvent } from 'react';
 import { Label } from 'components/ui/label';
-import { useSession } from 'next-auth/react';
-import { usePathname } from 'next/navigation';
-import { toast } from 'sonner';
-import { useGetNicknameQuery } from 'hooks/useGetNicknameQuery';
 import { useAllGetLetterQuery } from 'hooks/useAllGetLetterQuery';
+import { useDynamicLineHeight } from 'hooks/useDynamicLineHeight';
+import { useGetNicknameQuery } from 'hooks/useGetNicknameQuery';
+import { usePathname } from 'next/navigation';
+import { useSession } from 'next-auth/react';
+import { ChangeEvent, useRef, useState } from 'react';
+import { toast } from 'sonner';
 
 type WriteLetterModalProps = {
   closeModal: () => void;

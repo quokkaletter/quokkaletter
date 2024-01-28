@@ -1,9 +1,9 @@
 import { LoginOrJoinButton } from 'components/LoginOrJoinButton';
-import QuokkaImage from 'public/images/login-quokka.png';
-import Image from 'next/image';
-import { getServerSession } from 'next-auth';
 import { authOptions } from 'lib/auth';
+import Image from 'next/image';
 import { redirect } from 'next/navigation';
+import { getServerSession } from 'next-auth';
+import QuokkaImage from 'public/images/login-quokka.png';
 
 const toRedirect = async (userId: string) => {
   const res = await fetch(`${process.env.NEXTAUTH_URL}/api/redirect`, {

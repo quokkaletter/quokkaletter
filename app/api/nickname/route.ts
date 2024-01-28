@@ -1,5 +1,5 @@
-import { firebaseApp } from 'utils/firebaseApp';
 import { NextResponse } from 'next/server';
+import { firebaseApp } from 'utils/firebaseApp';
 
 /**
  * @swagger

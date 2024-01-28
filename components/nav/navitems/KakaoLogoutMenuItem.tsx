@@ -1,9 +1,8 @@
 'use client';
 
 import { Separator } from 'components/ui/separator';
-
-import React from 'react';
 import { signOut } from 'next-auth/react';
+import React from 'react';
 
 export const KakaoLogoutMenuItem = () => {
   return (

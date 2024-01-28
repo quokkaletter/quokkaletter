@@ -1,7 +1,7 @@
+import { ArrowLeftCircle, ArrowRightCircle } from 'lucide-react';
 import { Children, useEffect, useRef } from 'react';
 import { SwiperContainer } from 'swiper/element';
 import { register } from 'swiper/element/bundle';
-import { ArrowRightCircle, ArrowLeftCircle } from 'lucide-react';
 
 type SwiperWrapperProps = {
   children: React.ReactNode;

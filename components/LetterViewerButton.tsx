@@ -1,11 +1,11 @@
 'use client';
 
+import { ViewerLetterModal } from 'components/LetterViewerModal';
 import { Button } from 'components/ui/button';
 import { useModal } from 'hooks/useModal';
-import { ViewerLetterModal } from 'components/LetterViewerModal';
-import { useSession } from 'next-auth/react';
-import { usePathname } from 'next/navigation';
 import { Mail } from 'lucide-react';
+import { usePathname } from 'next/navigation';
+import { useSession } from 'next-auth/react';
 
 export const LetterViewerButton = () => {
   const { data: session } = useSession();

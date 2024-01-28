@@ -1,8 +1,8 @@
 'use client';
 
-import { useState, useEffect } from 'react';
-import { intervalToDuration, formatDuration } from 'date-fns';
+import { formatDuration, intervalToDuration } from 'date-fns';
 import { ko } from 'date-fns/locale';
+import { useEffect, useState } from 'react';
 
 type CountdownTimerProps = {
   targetDate: Date;
