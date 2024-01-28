@@ -6,10 +6,12 @@ import { useEffect, useState } from 'react';
 
 type CountdownTimerProps = {
   targetDate: Date;
+  showLabel?: boolean;
 };
 
 export const CountdownTimer: React.FC<CountdownTimerProps> = ({
   targetDate,
+  showLabel = false,
 }) => {
   const [timeLeft, setTimeLeft] = useState('');
 
@@ -17,7 +19,6 @@ export const CountdownTimer: React.FC<CountdownTimerProps> = ({
     const interval = setInterval(() => {
       const now = new Date();
       const duration = intervalToDuration({ start: now, end: targetDate });
-
       const formattedDuration = formatDuration(duration, {
         locale: ko,
       });
@@ -29,5 +30,5 @@ export const CountdownTimer: React.FC<CountdownTimerProps> = ({
 
   if (timeLeft === '') return null;
 
-  return <div>쿼카레터 공개 : {timeLeft}</div>;
+  return <div>{showLabel ? `쿼카레터 공개 : ${timeLeft}` : timeLeft}</div>;
 };

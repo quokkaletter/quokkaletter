@@ -2,9 +2,11 @@
 
 import { EnvelopeClosedIcon } from '@radix-ui/react-icons';
 import { SwiperWrapper } from 'components/common/swiper';
+import { CountdownTimer } from 'components/duration';
 import { Modal } from 'components/modal/';
 import { Button } from 'components/ui/button';
 import { Label } from 'components/ui/label';
+import { SCHEDULED_OPEN_DATE } from 'constants/date';
 import { useAllGetLetterQuery } from 'hooks/useAllGetLetterQuery';
 import { useDynamicLineHeight } from 'hooks/useDynamicLineHeight';
 import { Lock } from 'lucide-react';
@@ -117,10 +119,15 @@ export const Letter: React.FC<LetterProps> = ({
   }
 
   return (
-    <div className="relative w-full h-full rounded-md inset-0 bg-black bg-opacity-50 justify-center items-center flex flex-col gap-2 text-white">
-      <Lock color="white" size={48} />
-      {/* TODO:여기는 날짜 떨어지는 효과 주면 될 것 같음1 */}
-      <p>날짜가 얼마 안남았어요!</p>
+    <div
+      onClick={closeModal}
+      className="relative w-full h-full rounded-md inset-0 bg-black bg-opacity-50 text-white cursor-pointer"
+    >
+      <div className="w-[90%] max-w-[450px] min-h-[60%] max-h-[700px] rounded-lg modalPosition flex-col flex justify-center items-center gap-2">
+        <Lock color="white" size={48} />
+        <p>날짜가 얼마 안남았어요!</p>
+        <CountdownTimer targetDate={new Date(SCHEDULED_OPEN_DATE)} />
+      </div>
     </div>
   );
 };

@@ -1,0 +1,1 @@
+export const SCHEDULED_OPEN_DATE = '2024-02-10';
