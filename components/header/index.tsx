@@ -1,12 +1,12 @@
 'use client';
 
 import { TextAlignJustifyIcon } from '@radix-ui/react-icons';
-import { motion } from 'framer-motion';
-import { useState, useRef, useEffect } from 'react';
 import { Nav } from 'components/nav';
-import Logo from 'public/images/logo.png';
-import { usePathname } from 'next/navigation';
+import { motion } from 'framer-motion';
 import { useGetNicknameQuery } from 'hooks/useGetNicknameQuery';
+import { usePathname } from 'next/navigation';
+import Logo from 'public/images/logo.png';
+import { useEffect, useRef, useState } from 'react';
 
 export const Header: React.FC = () => {
   const [isNavVisible, setIsNavVisible] = useState(false);

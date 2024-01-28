@@ -1,7 +1,7 @@
 import { useMutation, useQueryClient } from '@tanstack/react-query';
 import { userManagerKeys } from 'lib/query';
-import { toast } from 'sonner';
 import { useRouter } from 'next/navigation';
+import { toast } from 'sonner';
 
 const saveUserInfo = async ({ nickname, userId }: UserInfo) => {
   const res = await fetch('/api/nickname', {

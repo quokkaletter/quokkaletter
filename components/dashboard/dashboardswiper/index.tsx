@@ -1,7 +1,7 @@
+import { ChevronLeft, ChevronRight } from 'lucide-react';
 import { Children, useEffect, useRef } from 'react';
 import { SwiperContainer } from 'swiper/element';
 import { register } from 'swiper/element/bundle';
-import { ChevronLeft, ChevronRight } from 'lucide-react';
 
 type DashboardSwiperWrapperProps = {
   children: React.ReactNode;

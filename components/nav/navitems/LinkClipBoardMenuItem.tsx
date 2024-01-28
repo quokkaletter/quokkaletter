@@ -1,10 +1,10 @@
 'use client';
 
-import React from 'react';
 import { ArrowTopRightIcon } from '@radix-ui/react-icons';
 import { Separator } from 'components/ui/separator';
-import { toast } from 'sonner';
 import { useSession } from 'next-auth/react';
+import React from 'react';
+import { toast } from 'sonner';
 
 export const LinkClipBoardMenuItem = () => {
   const { data: session } = useSession();

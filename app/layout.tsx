@@ -1,9 +1,10 @@
 import './globals.css';
+
+import { Analytics } from '@components/analytics';
 import { AuthSession } from 'components/common/auth/AuthSession';
-import { jua } from 'utils/fonts';
 import QueryProvider from 'components/common/query/QueryProvider';
 import { Toaster } from 'sonner';
-import { Analytics } from '@components/analytics';
+import { jua } from 'utils/fonts';
 
 export const metadata = {
   title: 'quokka letter',

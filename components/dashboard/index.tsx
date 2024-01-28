@@ -1,15 +1,15 @@
 'use client';
 
-import DashboardGrass from 'public/images/dashboard-grass.png';
-import DashboardTree from 'public/images/dashboard-tree.png';
-import DashboardQuokka from 'public/images/dashboard-quokka.png';
-import { useAllGetLetterQuery } from 'hooks/useAllGetLetterQuery';
-import { usePathname } from 'next/navigation';
-import { DashboardSwiperWrapper } from 'components/dashboard/dashboardswiper';
 import { LoadingIndicator } from '@components/common/loading';
-import { useModal } from 'hooks/useModal';
 import { ViewerLetterModal } from '@components/LetterViewerModal';
+import { DashboardSwiperWrapper } from 'components/dashboard/dashboardswiper';
+import { useAllGetLetterQuery } from 'hooks/useAllGetLetterQuery';
+import { useModal } from 'hooks/useModal';
+import { usePathname } from 'next/navigation';
 import { useSession } from 'next-auth/react';
+import DashboardGrass from 'public/images/dashboard-grass.png';
+import DashboardQuokka from 'public/images/dashboard-quokka.png';
+import DashboardTree from 'public/images/dashboard-tree.png';
 
 export const Dashboard = () => {
   const { data: session } = useSession();

@@ -1,8 +1,8 @@
 'use client';
 
-import React, { useState } from 'react';
 import { useSaveUserInfoMutation } from 'hooks/useSaveUserInfoMutation';
 import { useSession } from 'next-auth/react';
+import React, { useState } from 'react';
 
 const Join: React.FC = () => {
   const { data: session } = useSession();
