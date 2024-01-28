@@ -1,5 +1,5 @@
 import { LoginOrJoinButton } from 'components/LoginOrJoinButton';
-import QuokkaImage from 'public/images/quokka.svg';
+import QuokkaImage from 'public/images/login-quokka.png';
 import Image from 'next/image';
 import { getServerSession } from 'next-auth';
 import { authOptions } from 'lib/auth';
@@ -31,14 +31,12 @@ export default async function Home() {
 
   return (
     <div className="overflow-hidden h-full">
-      <div className="flex justify-center  flex-col items-center h-screen bg-green">
-        <Image
-          src={QuokkaImage.src}
-          alt="quokka logo"
-          width={160}
-          height={160}
-        />
-        <LoginOrJoinButton />
+      <div className="flex justify-center items-center h-screen bg-green gap-2">
+        <Image src={QuokkaImage.src} alt="" width={150} height={150} />
+        <div className="flex flex-col gap-4">
+          <div className="text-white">쿼카레터에 오신 걸 환영해요!</div>
+          <LoginOrJoinButton />
+        </div>
       </div>
     </div>
   );

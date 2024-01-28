@@ -4,9 +4,20 @@ import { TextAlignJustifyIcon } from '@radix-ui/react-icons';
 import { motion } from 'framer-motion';
 import { useState, useRef, useEffect } from 'react';
 import { Nav } from 'components/nav';
+import Logo from 'public/images/logo.png';
+import { usePathname } from 'next/navigation';
+import { useGetNicknameQuery } from 'hooks/useGetNicknameQuery';
 
 export const Header: React.FC = () => {
   const [isNavVisible, setIsNavVisible] = useState(false);
+  const pathname = usePathname();
+  const userId = pathname.match(/\/dashboard\/([a-zA-Z0-9]+)/)[1];
+
+  const {
+    nickname: { data: nickname },
+  } = useGetNicknameQuery({
+    userId,
+  });
 
   const toggleNav = () => {
     setIsNavVisible(!isNavVisible);
@@ -40,7 +51,10 @@ export const Header: React.FC = () => {
 
   return (
     <header className="bg-[#588251]/50 text-white flex justify-between p-3 relative">
-      <a href="/">quokka letter</a>
+      <a href="/" className="flex items-center gap-2">
+        <img src={Logo.src} alt="logo" className="w-6" />
+        {nickname ? `${nickname}'s quokka letter` : 'quokka letter'}
+      </a>
       <TextAlignJustifyIcon
         onClick={toggleNav}
         className="w-[20px] h-[20px] cursor-pointer"
