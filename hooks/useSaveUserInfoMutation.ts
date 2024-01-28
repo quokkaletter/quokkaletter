@@ -8,8 +8,6 @@ const saveUserInfo = async ({ nickname, userId }: UserInfo) => {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
-      // TODO: token
-      // authorization: `Bearer ${token}`,
     },
     body: JSON.stringify({ nickname, userId }),
   });
