@@ -27,5 +27,7 @@ export const CountdownTimer: React.FC<CountdownTimerProps> = ({
     return () => clearInterval(interval);
   }, [targetDate]);
 
-  return <div>남은 시간: {timeLeft}</div>;
+  if (timeLeft === '') return null;
+
+  return <div>쿼카레터 공개 : {timeLeft}</div>;
 };
