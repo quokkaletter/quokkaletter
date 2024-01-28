@@ -4,6 +4,7 @@ import { CountdownTimer } from 'components/duration';
 import { Header } from 'components/header';
 import { LetterViewerButton } from 'components/LetterViewerButton';
 import { WriteLetterButton } from 'components/WriteLetterButton';
+import { SCHEDULED_OPEN_DATE } from 'constants/date';
 import { authOptions } from 'lib/auth';
 import { redirect } from 'next/navigation';
 import { getServerSession } from 'next-auth';
@@ -21,7 +22,7 @@ export default async function DashBoard() {
       <CloudAnimation />
 
       <div className="h-[calc(100vh-48px)] p-2 bg-[#A5D8FF] text-right">
-        <CountdownTimer targetDate={new Date('2024-02-10')} />
+        <CountdownTimer showLabel targetDate={new Date(SCHEDULED_OPEN_DATE)} />
         <WriteLetterButton />
         <LetterViewerButton />
       </div>
