@@ -10,6 +10,7 @@ import { SCHEDULED_OPEN_DATE } from 'constants/date';
 import { useAllGetLetterQuery } from 'hooks/useAllGetLetterQuery';
 import { useDynamicLineHeight } from 'hooks/useDynamicLineHeight';
 import { Lock } from 'lucide-react';
+import { X } from 'lucide-react';
 import { useRef } from 'react';
 
 interface ViewerLetterModalProps {
@@ -84,37 +85,55 @@ export const Letter: React.FC<LetterProps> = ({
 
   if (isVisible) {
     return (
-      <div className="modalPosition bg-white w-[90%] max-w-[450px] min-h-[60%] max-h-[700px] rounded-lg">
-        <div className="flex justify-center items-center gap-2 p-2 relative">
-          <Label htmlFor="nickname" className="border-none border-b text-xl">
-            From:
-          </Label>
-          <input
-            id="nickname"
-            className="text-xl focus:outline-none p-2 w-full pointer-events-none"
-            value={anonymousNickname}
-            readOnly
-          />
+      <section className="w-full h-full">
+        <div className="w-[90%] max-w-[450px] min-h-[30%] max-h-[700px] modalPosition">
+          <div className="w-full flex justify-end px-2 py-1">
+            {/* X Button */}
+            <div
+              onClick={closeModal}
+              className="w-6 h-6 bg-white rounded-md border-solid border-black border-1 flex justify-center items-center mb-2 cursor-pointer"
+            >
+              <X className="w-6 h-6" />
+            </div>
+          </div>
+          {/* Letters */}
+          <div className="bg-white mb-2 rounded-lg">
+            <div className="flex justify-center items-center gap-2 p-2 relative">
+              <Label
+                htmlFor="nickname"
+                className="border-none border-b text-xl"
+              >
+                From:
+              </Label>
+              <input
+                id="nickname"
+                className="text-xl focus:outline-none p-2 w-full pointer-events-none"
+                value={anonymousNickname}
+                readOnly
+              />
+            </div>
+            <textarea
+              ref={letterRef}
+              maxLength={300}
+              style={{
+                lineHeight: lineHeight,
+              }}
+              id="letter"
+              value={contents}
+              className="letter-bg placeholder:letter-bg text-xl resize-none w-full py-2 px-5 focus:outline-none pointer-events-none"
+              readOnly
+            />
+          </div>
+          {/* Check Button */}
+          <Button
+            onClick={closeModal}
+            className={`w-full text-xl flex items-center justify-center ${buttonDynamicStyles}`}
+          >
+            확인
+            <EnvelopeClosedIcon className="ml-2" />
+          </Button>
         </div>
-        <textarea
-          ref={letterRef}
-          maxLength={300}
-          style={{
-            lineHeight: lineHeight,
-          }}
-          id="letter"
-          value={contents}
-          className="letter-bg placeholder:letter-bg text-xl resize-none w-full py-2 px-5 focus:outline-none pointer-events-none"
-          readOnly
-        />
-        <Button
-          onClick={closeModal}
-          className={`w-full text-xl flex items-center justify-center ${buttonDynamicStyles}`}
-        >
-          확인
-          <EnvelopeClosedIcon className="ml-2" />
-        </Button>
-      </div>
+      </section>
     );
   }
 
