@@ -8,7 +8,7 @@ export const Nav = () => {
   const userId = session?.user?.id;
   const { nickname } = useGetNicknameQuery({ userId });
 
-  console.log('nickname', nickname);
+  console.log('session', nickname);
 
   return (
     <div className="p-4">

@@ -13,6 +13,8 @@ export const Header: React.FC = () => {
   const pathname = usePathname();
   const userId = pathname.match(/\/dashboard\/([a-zA-Z0-9]+)/)[1];
 
+  console.log('pathname', userId);
+
   const {
     nickname: { data: nickname },
   } = useGetNicknameQuery({
