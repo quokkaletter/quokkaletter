@@ -34,13 +34,13 @@ export const ViewerLetterModal: React.FC<ViewerLetterModalProps> = ({
     return (
       <Modal onClose={closeModal} visible={isModalVisible}>
         <div className=" h-full flex items-center justify-center ">
-          <p className="bg-white p-10 rounded">
+          <div className="bg-white p-10 rounded">
             <p>
               쿼카레터가 아직 없어요! <br />
               친구에게 링크를 공유해볼까요?
               <span className="text-sm">(메뉴 - 내 링크 공유하기)</span>
             </p>
-          </p>
+          </div>
         </div>
       </Modal>
     );
