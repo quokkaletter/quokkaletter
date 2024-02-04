@@ -24,7 +24,7 @@ export const getNickname = async ({ userId }: GetNicknameParams) => {
 
 export const useGetNicknameQuery = ({ userId }: GetNicknameParams) => {
   const nickname = useQuery({
-    queryKey: [...nicknameManagerKeys.nickname],
+    queryKey: [...nicknameManagerKeys.nickname, userId],
     enabled: !!userId,
     queryFn: () => getNickname({ userId }),
   });

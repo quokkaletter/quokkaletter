@@ -41,6 +41,7 @@ export const LetterViewerButton: React.FC<LetterViewerButtonProps> = ({
       <ViewerLetterModal
         closeModal={closeModal}
         isModalVisible={isModalVisible}
+        recipientId={recipientId}
       />
     </>
   );

@@ -36,7 +36,9 @@ export async function GET(
     .collection('users')
     .doc(params.userId)
     .get();
+
   const user = userSnapshot.data();
+
   if (user === undefined) {
     throw new Error(`Cannot find user. userId was <<${params.userId}>>`);
   }

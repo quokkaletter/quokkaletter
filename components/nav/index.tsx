@@ -8,8 +8,6 @@ export const Nav = () => {
   const userId = session?.user?.id;
   const { nickname } = useGetNicknameQuery({ userId });
 
-  console.log('nickname', nickname);
-
   return (
     <div className="p-4">
       <p>{nickname.data}님 반갑습니다.</p>

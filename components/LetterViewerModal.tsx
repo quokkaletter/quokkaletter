@@ -16,13 +16,17 @@ import { useRef } from 'react';
 interface ViewerLetterModalProps {
   closeModal: () => void;
   isModalVisible: boolean;
+  recipientId: string;
 }
 
 export const ViewerLetterModal: React.FC<ViewerLetterModalProps> = ({
   closeModal,
   isModalVisible,
+  recipientId,
 }) => {
-  const { letters } = useAllGetLetterQuery({});
+  const { letters } = useAllGetLetterQuery({
+    userId: recipientId,
+  });
 
   const letterRef = useRef(null);
   const lineHeight = useDynamicLineHeight({
