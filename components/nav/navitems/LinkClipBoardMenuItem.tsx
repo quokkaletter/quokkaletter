@@ -17,11 +17,15 @@ export const LinkClipBoardMenuItem = () => {
       navigator.maxTouchPoints > 0 &&
       navigator.share
     ) {
-      navigator
-        .share({
+      try {
+        navigator.share({
           text: myLink,
-        })
-        .then(() => toast.success('링크가 성공적으로 공유되었습니다.'));
+        });
+
+        toast.success('링크가 성공적으로 공유되었습니다.');
+      } catch (error) {
+        toast.error('다시 한번 시도해보세요!');
+      }
     } else {
       await navigator.clipboard.writeText(myLink);
 
