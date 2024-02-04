@@ -27,6 +27,8 @@ export const Dashboard = () => {
 
   const isMyDashboard = myId === userId;
 
+  console.log('letters.isLoading', letters.isLoading);
+
   return (
     <div>
       <img
@@ -65,21 +67,21 @@ export const Dashboard = () => {
           transform: 'translateX(-50%)',
         }}
       />
-      <div
-        style={{
-          zIndex: 1,
-          position: 'absolute',
-          bottom: '230px',
-          height: '300px',
-          width: '200px',
-          left: '50%',
-          transform: 'translateX(-50%)',
-          padding: '5px',
-        }}
-      >
-        {letters.isLoading ? (
-          <LoadingIndicator />
-        ) : (
+      {letters.isLoading ? (
+        <LoadingIndicator />
+      ) : (
+        <div
+          style={{
+            zIndex: 1,
+            position: 'absolute',
+            bottom: '230px',
+            height: '300px',
+            width: '200px',
+            left: '50%',
+            transform: 'translateX(-50%)',
+            padding: '5px',
+          }}
+        >
           <DashboardSwiperWrapper>
             {groupedLetters?.map((letters, index) => (
               <div
@@ -110,12 +112,13 @@ export const Dashboard = () => {
               </div>
             ))}
           </DashboardSwiperWrapper>
-        )}
-        <ViewerLetterModal
-          closeModal={closeModal}
-          isModalVisible={isModalVisible}
-        />
-      </div>
+
+          <ViewerLetterModal
+            closeModal={closeModal}
+            isModalVisible={isModalVisible}
+          />
+        </div>
+      )}
     </div>
   );
 };
