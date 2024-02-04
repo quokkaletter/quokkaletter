@@ -33,13 +33,24 @@ export const ViewerLetterModal: React.FC<ViewerLetterModalProps> = ({
   if (letters.data?.length === 0)
     return (
       <Modal onClose={closeModal} visible={isModalVisible}>
-        <div className=" h-full flex items-center justify-center ">
-          <div className="bg-white p-10 rounded">
-            <p>
-              쿼카레터가 아직 없어요! <br />
-              친구에게 링크를 공유해볼까요?
-              <span className="text-sm">(메뉴 - 내 링크 공유하기)</span>
-            </p>
+        <div className="w-[90%] max-w-[450px] min-h-[30%] max-h-[700px] modalPosition">
+          <div className="h-full flex items-center justify-center flex-col">
+            {/* X Button */}
+            <div className="w-full flex justify-end px-2 py-1">
+              <div
+                onClick={closeModal}
+                className="w-6 h-6 bg-white rounded-md border-solid border-black border-1 flex justify-center items-center mb-2 cursor-pointer"
+              >
+                <X className="w-6 h-6" />
+              </div>
+            </div>
+            <div className="bg-white p-10 rounded w-full">
+              <p>
+                쿼카레터가 아직 없어요! <br />
+                친구에게 링크를 공유해볼까요?
+                <span className="text-sm">(메뉴 - 내 링크 공유하기)</span>
+              </p>
+            </div>
           </div>
         </div>
       </Modal>
