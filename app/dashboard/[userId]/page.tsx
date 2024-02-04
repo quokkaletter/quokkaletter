@@ -13,6 +13,7 @@ export default async function DashBoard() {
   const session = await getServerSession(authOptions);
 
   if (!session) return redirect('/');
+  const userId = session?.user?.id;
 
   return (
     <div className="overflow-hidden h-full relative">
@@ -23,8 +24,8 @@ export default async function DashBoard() {
 
       <div className="h-[calc(100vh-48px)] p-2 bg-[#A5D8FF] text-right">
         <CountdownTimer showLabel targetDate={new Date(SCHEDULED_OPEN_DATE)} />
-        <WriteLetterButton />
-        <LetterViewerButton />
+        <WriteLetterButton userId={userId} />
+        <LetterViewerButton userId={userId} />
       </div>
     </div>
   );
