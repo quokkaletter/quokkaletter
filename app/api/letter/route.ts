@@ -48,6 +48,8 @@ import { firebaseApp } from 'utils/firebaseApp';
  *                   type: string
  *                 anonymousNickname:
  *                   type: string
+ *                 treeIconNumber:
+ *                   type: number
  *                 createdAt:
  *                   type: object
  *                   properties:
@@ -77,12 +79,14 @@ export async function POST(req: Request) {
   }
 
   const operatedAt = new Date();
+  const treeIconNumber = Math.floor(Math.random() * 5) + 1;
   const addedLetterRef = await firebaseApp.collection('letters').add({
     writerId: userId,
     recipientId,
     contents,
     anonymousNickname,
     isVisible: false,
+    treeIconNumber,
     createdAt: operatedAt,
     updatedAt: operatedAt,
   });
