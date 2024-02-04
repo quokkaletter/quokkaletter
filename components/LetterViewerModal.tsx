@@ -129,7 +129,7 @@ export const Letter: React.FC<LetterProps> = ({
             onClick={closeModal}
             className={`w-full text-xl flex items-center justify-center ${buttonDynamicStyles}`}
           >
-            확인
+            닫기
             <EnvelopeClosedIcon className="ml-2" />
           </Button>
         </div>
