@@ -27,8 +27,6 @@ export const Dashboard = () => {
 
   const isMyDashboard = myId === userId;
 
-  console.log('letters.isLoading', letters.isLoading);
-
   return (
     <div>
       <img
