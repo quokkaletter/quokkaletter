@@ -24,17 +24,18 @@ export default async function Home() {
   const session = await getServerSession(authOptions);
 
   if (session) {
-    const to = await toRedirect(session.user.id);
+    console.log({ session });
 
+    const to = await toRedirect(session.user.id);
     return redirect(to.redirect);
   }
 
   return (
     <div className="overflow-hidden h-full">
       <div className="flex justify-center items-center h-screen bg-green gap-2">
-        <Image src={QuokkaImage.src} alt="" width={150} height={150} />
-        <div className="flex flex-col gap-4">
+        <div className="flex flex-col gap-4 items-center">
           <div className="text-white">쿼카레터에 오신 걸 환영해요!</div>
+          <Image src={QuokkaImage.src} alt="" width={150} height={150} />
           <LoginOrJoinButton />
         </div>
       </div>
