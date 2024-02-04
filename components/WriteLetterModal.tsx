@@ -5,6 +5,7 @@ import { Label } from 'components/ui/label';
 import { useAllGetLetterQuery } from 'hooks/useAllGetLetterQuery';
 import { useDynamicLineHeight } from 'hooks/useDynamicLineHeight';
 import { useGetNicknameQuery } from 'hooks/useGetNicknameQuery';
+import { X } from 'lucide-react';
 import { usePathname } from 'next/navigation';
 import { useSession } from 'next-auth/react';
 import { ChangeEvent, useRef, useState } from 'react';
@@ -78,40 +79,58 @@ export const WriteLetterModal = ({
   return (
     <>
       <Modal onClose={closeModal} visible={isModalVisible}>
-        <div className="modalPosition bg-white w-[90%] max-w-[450px] min-h-[60%] max-h-[700px] rounded-lg">
-          <div className="flex justify-center items-center gap-2 p-2 relative">
-            <Label htmlFor="nickname" className="border-none border-b text-xl">
-              To:
-            </Label>
-            <input
-              id="nickname"
-              className="text-xl focus:outline-none p-2 w-full"
-              value={nickName}
-              onChange={handleNickNameChange}
-              placeholder="나의 닉네임을 지정해주세요 :-)"
-            />
+        <section className="w-full h-full">
+          <div className="w-[90%] max-w-[450px] min-h-[30%] max-h-[700px] modalPosition">
+            {/* X Button */}
+            <div className="w-full flex justify-end px-2 py-1">
+              <div
+                onClick={closeModal}
+                className="w-6 h-6 bg-white rounded-md border-solid border-black border-1 flex justify-center items-center mb-2 cursor-pointer"
+              >
+                <X className="w-6 h-6" />
+              </div>
+            </div>
+
+            {/* Letters */}
+            <div className="bg-white mb-2 rounded-lg">
+              <div className="flex justify-center items-center gap-2 p-2 relative">
+                <Label
+                  htmlFor="nickname"
+                  className="border-none border-b text-xl"
+                >
+                  To:
+                </Label>
+                <input
+                  id="nickname"
+                  className="text-xl focus:outline-none p-2 w-full"
+                  value={nickName}
+                  onChange={handleNickNameChange}
+                  placeholder="나의 닉네임을 지정해주세요 :-)"
+                />
+              </div>
+              <textarea
+                maxLength={300}
+                ref={letterRef}
+                style={{
+                  lineHeight: lineHeight,
+                }}
+                id="letter"
+                onChange={handleLetterChange}
+                value={letter}
+                className="letter-bg placeholder:letter-bg text-xl resize-none w-full py-2 px-5 focus:outline-none"
+                placeholder={`평소에 '${recipientNickname}'에게 궁금했거나 하고 싶은 이야기가 있다면 편하게 남겨보아요!`}
+              />
+              <Button
+                className={`w-full text-xl flex items-center justify-center ${buttonDynamicStyles}`}
+                onClick={handleSendLetter}
+                disabled={isButtonDisabled}
+              >
+                편지 전송
+                <EnvelopeClosedIcon className="ml-2" />
+              </Button>
+            </div>
           </div>
-          <textarea
-            maxLength={300}
-            ref={letterRef}
-            style={{
-              lineHeight: lineHeight,
-            }}
-            id="letter"
-            onChange={handleLetterChange}
-            value={letter}
-            className="letter-bg placeholder:letter-bg text-xl resize-none w-full py-2 px-5 focus:outline-none"
-            placeholder={`평소에 '${recipientNickname}'에게 궁금했거나 하고 싶은 이야기가 있다면 편하게 남겨보아요!`}
-          />
-          <Button
-            className={`w-full text-xl flex items-center justify-center ${buttonDynamicStyles}`}
-            onClick={handleSendLetter}
-            disabled={isButtonDisabled}
-          >
-            편지 전송
-            <EnvelopeClosedIcon className="ml-2" />
-          </Button>
-        </div>
+        </section>
       </Modal>
     </>
   );

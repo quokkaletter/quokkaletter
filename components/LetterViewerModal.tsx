@@ -87,8 +87,8 @@ export const Letter: React.FC<LetterProps> = ({
     return (
       <section className="w-full h-full">
         <div className="w-[90%] max-w-[450px] min-h-[30%] max-h-[700px] modalPosition">
+          {/* X Button */}
           <div className="w-full flex justify-end px-2 py-1">
-            {/* X Button */}
             <div
               onClick={closeModal}
               className="w-6 h-6 bg-white rounded-md border-solid border-black border-1 flex justify-center items-center mb-2 cursor-pointer"
