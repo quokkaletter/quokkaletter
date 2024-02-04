@@ -86,27 +86,28 @@ export const Dashboard = () => {
                 key={index}
                 className="absolute grid grid-cols-2 grid-rows-3 gap-4 h-[240px]"
               >
-                {letters?.map(({ anonymousNickname }, index) => {
-                  return (
-                    <div
-                      key={index + anonymousNickname}
-                      className={`flex flex-col justify-center items-center text-center ${
-                        isMyDashboard ? 'cursor-pointer' : 'cursor-default'
-                      }`}
-                      onClick={() => {
-                        isMyDashboard && openModal();
-                      }}
-                    >
-                      <span className="text-white">{anonymousNickname}</span>
-                      <img
-                        src={`/images/tree_icon_v${
-                          Math.floor(Math.random() * 5) + 1
-                        }.png`}
-                        className="w-12"
-                      />
-                    </div>
-                  );
-                })}
+                {letters?.map(
+                  ({ anonymousNickname, treeIconNumber }, index) => {
+                    return (
+                      <div
+                        key={index + anonymousNickname}
+                        className={`flex flex-col justify-center items-center text-center ${
+                          isMyDashboard ? 'cursor-pointer' : 'cursor-default'
+                        }`}
+                        onClick={() => {
+                          isMyDashboard && openModal();
+                        }}
+                      >
+                        <span className="text-white">{anonymousNickname}</span>
+                        <img
+                          alt=""
+                          src={`/images/tree_icon_v${treeIconNumber}.png`}
+                          className="w-12"
+                        />
+                      </div>
+                    );
+                  },
+                )}
               </div>
             ))}
           </DashboardSwiperWrapper>

@@ -6,4 +6,5 @@ export class Letter {
   isVisible: false;
   createdAt: Date;
   updatedAt: Date;
+  treeIconNumber: number;
 }
