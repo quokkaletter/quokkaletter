@@ -45,8 +45,6 @@ export const useAllGetLetterQuery = ({ userId }: useAllGetLetterQueryProps) => {
     queryFn: () => getLetters({ userId: userId ?? myId }),
   });
 
-  console.log('letters', letters.data);
-
   return {
     letters,
   };
