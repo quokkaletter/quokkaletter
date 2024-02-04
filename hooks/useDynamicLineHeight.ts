@@ -22,9 +22,6 @@ export const useDynamicLineHeight = ({
         const height = width * ratio;
         const newLineHeight = height / lines;
 
-        console.log('width', width);
-        console.log('newLineHeight', newLineHeight);
-
         setLineHeight(`${newLineHeight}px`);
       }
     };
