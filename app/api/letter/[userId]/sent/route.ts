@@ -37,6 +37,8 @@ import { firebaseApp } from 'utils/firebaseApp';
  *                         type: string
  *                       anonymousNickname:
  *                         type: string
+ *                       treeIconNumber:
+ *                         type: number
  *                       createdAt:
  *                         type: object
  *                         properties:
