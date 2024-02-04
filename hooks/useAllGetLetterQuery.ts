@@ -7,11 +7,14 @@ type GetLettersParams = {
 };
 
 type Letter = {
-  anonymousNickname: string;
-  contents: string;
-  isVisible: boolean;
-  recipientId: string;
   writerId: string;
+  recipientId: string;
+  contents: string;
+  anonymousNickname: string;
+  isVisible: boolean;
+  createdAt: Date;
+  updatedAt: Date;
+  treeIconNumber: number;
 };
 
 const getLetters = async ({ userId }: GetLettersParams) => {
@@ -41,6 +44,8 @@ export const useAllGetLetterQuery = ({ userId }: useAllGetLetterQueryProps) => {
     enabled: !!(userId ?? myId),
     queryFn: () => getLetters({ userId: userId ?? myId }),
   });
+
+  console.log('letters', letters.data);
 
   return {
     letters,
