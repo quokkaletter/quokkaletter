@@ -5,11 +5,14 @@ import { Button } from 'components/ui/button';
 import { useModal } from 'hooks/useModal';
 import { Mail } from 'lucide-react';
 import { usePathname } from 'next/navigation';
-import { useSession } from 'next-auth/react';
 
-export const LetterViewerButton = () => {
-  const { data: session } = useSession();
-  const userId = session?.user?.id;
+type LetterViewerButtonProps = {
+  userId: string;
+};
+
+export const LetterViewerButton: React.FC<LetterViewerButtonProps> = ({
+  userId,
+}) => {
   const { openModal, closeModal, isModalVisible } = useModal();
   const pathname = usePathname();
   const recipientId = pathname.match(/\/dashboard\/([a-zA-Z0-9]+)/)[1];

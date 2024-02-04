@@ -1,16 +1,18 @@
 'use client';
 
 import { Button } from 'components/ui/button';
+import { WriteLetterModal } from 'components/WriteLetterModal';
 import { useModal } from 'hooks/useModal';
 import { Pen } from 'lucide-react';
 import { usePathname } from 'next/navigation';
-import { useSession } from 'next-auth/react';
 
-import { WriteLetterModal } from './WriteLetterModal';
+type WriteLetterButtonProps = {
+  userId: string;
+};
 
-export const WriteLetterButton = () => {
-  const { data: session } = useSession();
-  const userId = session?.user?.id;
+export const WriteLetterButton: React.FC<WriteLetterButtonProps> = ({
+  userId,
+}) => {
   const pathname = usePathname();
   const recipientId = pathname.match(/\/dashboard\/([a-zA-Z0-9]+)/)[1];
   const { closeModal, isModalVisible, openModal } = useModal();
