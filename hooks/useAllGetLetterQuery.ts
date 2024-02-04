@@ -1,6 +1,5 @@
 import { useQuery } from '@tanstack/react-query';
 import { letterManagerKeys } from 'lib/query';
-import { useSession } from 'next-auth/react';
 
 type GetLettersParams = {
   userId: string;
@@ -36,13 +35,10 @@ type useAllGetLetterQueryProps = {
 };
 
 export const useAllGetLetterQuery = ({ userId }: useAllGetLetterQueryProps) => {
-  const { data: session } = useSession();
-  const myId = session?.user?.id;
-
   const letters = useQuery<Letter[]>({
-    queryKey: [...letterManagerKeys.letters],
-    enabled: !!(userId ?? myId),
-    queryFn: () => getLetters({ userId: userId ?? myId }),
+    queryKey: [...letterManagerKeys.letters, userId],
+    enabled: !!userId,
+    queryFn: () => getLetters({ userId }),
   });
 
   return {
