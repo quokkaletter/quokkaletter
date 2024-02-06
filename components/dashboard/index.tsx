@@ -26,6 +26,8 @@ export const Dashboard = () => {
   );
 
   const isMyDashboard = myId === userId;
+  const formatNickname = (nickname: string) =>
+    nickname.length > 7 ? `${nickname.substring(0, 7)}...` : nickname;
 
   return (
     <div>
@@ -88,6 +90,8 @@ export const Dashboard = () => {
               >
                 {letters?.map(
                   ({ anonymousNickname, treeIconNumber }, index) => {
+                    const displayedNickname = formatNickname(anonymousNickname);
+
                     return (
                       <div
                         key={index + anonymousNickname}
@@ -98,7 +102,7 @@ export const Dashboard = () => {
                           isMyDashboard && openModal();
                         }}
                       >
-                        <span className="text-white">{anonymousNickname}</span>
+                        <span className="text-white">{displayedNickname}</span>
                         <img
                           alt=""
                           src={`/images/tree_icon_v${treeIconNumber}.png`}
