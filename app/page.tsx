@@ -24,8 +24,6 @@ export default async function Home() {
   const session = await getServerSession(authOptions);
 
   if (session) {
-    console.log({ session });
-
     const to = await toRedirect(session.user.id);
     return redirect(to.redirect);
   }

@@ -115,6 +115,7 @@ export const Dashboard = () => {
           <ViewerLetterModal
             closeModal={closeModal}
             isModalVisible={isModalVisible}
+            recipientId={userId}
           />
         </div>
       )}
