@@ -77,10 +77,16 @@ export async function GET(
   const lettersByRecipientId = lettersByRecipientIdSnapshot.docs.map((doc) =>
     doc.data(),
   );
+  const veiledLetters = lettersByRecipientId.map((letter) => {
+    return {
+      treeIconNumber: letter.treeIconNumber,
+      anonymousNickname: letter.anonymousNickname,
+    };
+  });
 
   return NextResponse.json(
     {
-      letters: lettersByRecipientId,
+      letters: veiledLetters,
     },
     { status: 200, statusText: 'success' },
   );
