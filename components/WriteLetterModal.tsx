@@ -98,7 +98,7 @@ export const WriteLetterModal = ({
                   htmlFor="nickname"
                   className="border-none border-b text-xl"
                 >
-                  To:
+                  From:
                 </Label>
                 <input
                   id="nickname"
