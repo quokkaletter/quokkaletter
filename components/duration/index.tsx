@@ -14,10 +14,19 @@ export const CountdownTimer: React.FC<CountdownTimerProps> = ({
   showLabel = false,
 }) => {
   const [timeLeft, setTimeLeft] = useState('');
+  const [isScheduledOpenDate, setIsScheduledOpenDate] = useState(false);
 
   useEffect(() => {
     const interval = setInterval(() => {
       const now = new Date();
+
+      if (now >= targetDate) {
+        setTimeLeft('쿼카레터가 공개되었습니다! 🍀');
+        setIsScheduledOpenDate(true);
+        clearInterval(interval);
+        return;
+      }
+
       const duration = intervalToDuration({ start: now, end: targetDate });
       const formattedDuration = formatDuration(duration, {
         locale: ko,
@@ -30,5 +39,11 @@ export const CountdownTimer: React.FC<CountdownTimerProps> = ({
 
   if (timeLeft === '') return null;
 
-  return <div>{showLabel ? `쿼카레터 공개 : ${timeLeft}` : timeLeft}</div>;
+  return (
+    <div>
+      {showLabel && !isScheduledOpenDate
+        ? `쿼카레터 공개 : ${timeLeft}`
+        : timeLeft}
+    </div>
+  );
 };
