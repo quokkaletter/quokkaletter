@@ -147,7 +147,7 @@ export const Letter: React.FC<LetterProps> = ({
               }}
               id="letter"
               value={contents}
-              className="letter-bg placeholder:letter-bg text-xl resize-none w-full py-2 px-5 focus:outline-none pointer-events-none overflow-y-auto"
+              className="letter-bg placeholder:letter-bg text-xl resize-none w-full py-2 px-5 focus:outline-none overflow-y-auto"
               readOnly
             />
           </div>
