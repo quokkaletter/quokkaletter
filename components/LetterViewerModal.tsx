@@ -17,12 +17,19 @@ interface ViewerLetterModalProps {
   closeModal: () => void;
   isModalVisible: boolean;
   recipientId: string;
+  selectedLetter?: {
+    contents: string;
+    anonymousNickname: string;
+    treeIconNumber: number;
+    id: number;
+  };
 }
 
 export const ViewerLetterModal: React.FC<ViewerLetterModalProps> = ({
   closeModal,
   isModalVisible,
   recipientId,
+  selectedLetter,
 }) => {
   const { letters } = useAllGetLetterQuery({
     userId: recipientId,
@@ -60,10 +67,14 @@ export const ViewerLetterModal: React.FC<ViewerLetterModalProps> = ({
       </Modal>
     );
 
-  if (letters.data)
+  const selectedLetterIndex = selectedLetter
+    ? letters.data?.findIndex((letter) => letter.id === selectedLetter.id)
+    : 0;
+
+  if (letters.data) {
     return (
       <Modal onClose={closeModal} visible={isModalVisible}>
-        <SwiperWrapper>
+        <SwiperWrapper initialSlide={selectedLetterIndex}>
           {letters.data.map((letter, key) => (
             <Letter
               key={key}
@@ -76,6 +87,7 @@ export const ViewerLetterModal: React.FC<ViewerLetterModalProps> = ({
         </SwiperWrapper>
       </Modal>
     );
+  }
 };
 
 type LetterProps = {
@@ -129,13 +141,13 @@ export const Letter: React.FC<LetterProps> = ({
             </div>
             <textarea
               ref={letterRef}
-              maxLength={300}
+              maxLength={500}
               style={{
                 lineHeight: lineHeight,
               }}
               id="letter"
               value={contents}
-              className="letter-bg placeholder:letter-bg text-xl resize-none w-full py-2 px-5 focus:outline-none pointer-events-none"
+              className="letter-bg placeholder:letter-bg text-xl resize-none w-full py-2 px-5 focus:outline-none pointer-events-none overflow-y-auto"
               readOnly
             />
           </div>

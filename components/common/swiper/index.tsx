@@ -6,24 +6,30 @@ import { register } from 'swiper/element/bundle';
 type SwiperWrapperProps = {
   children: React.ReactNode;
   className?: string;
+  initialSlide?: number;
 };
 
-export const SwiperWrapper: React.FC<SwiperWrapperProps> = ({ children }) => {
+export const SwiperWrapper: React.FC<SwiperWrapperProps> = ({
+  children,
+  initialSlide = 0,
+}) => {
   return (
     <>
-      <SwiperContainerComp>{children}</SwiperContainerComp>
+      <SwiperContainerComp initialSlide={initialSlide}>
+        {children}
+      </SwiperContainerComp>
     </>
   );
 };
 
 type SwiperContainerProps = {
   children: React.ReactNode;
-  //   swiperOptions: any;
+  initialSlide?: number;
 };
 
 export const SwiperContainerComp: React.FC<SwiperContainerProps> = ({
   children,
-  //   ...swiperOptions
+  initialSlide = 0,
 }) => {
   const swiperRef = useRef<SwiperContainer>(null);
 
@@ -40,10 +46,11 @@ export const SwiperContainerComp: React.FC<SwiperContainerProps> = ({
       },
     };
 
+    swiperEl.swiper?.slideTo(initialSlide, 0);
     Object.assign(swiperEl, swiperParams);
 
     swiperEl.initialize();
-  }, []);
+  }, [swiperRef, initialSlide]);
 
   return (
     <section className="h-full">
