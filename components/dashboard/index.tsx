@@ -4,12 +4,14 @@ import { LoadingIndicator } from '@components/common/loading';
 import { ViewerLetterModal } from '@components/LetterViewerModal';
 import { DashboardSwiperWrapper } from 'components/dashboard/dashboardswiper';
 import { useAllGetLetterQuery } from 'hooks/useAllGetLetterQuery';
+import { Letter } from 'hooks/useAllGetLetterQuery';
 import { useModal } from 'hooks/useModal';
 import { usePathname } from 'next/navigation';
 import { useSession } from 'next-auth/react';
 import DashboardGrass from 'public/images/dashboard-grass.png';
 import DashboardQuokka from 'public/images/dashboard-quokka.png';
 import DashboardTree from 'public/images/dashboard-tree.png';
+import { useState } from 'react';
 
 export const Dashboard = () => {
   const { data: session } = useSession();
@@ -18,6 +20,12 @@ export const Dashboard = () => {
   const userId = pathname.match(/\/dashboard\/([a-zA-Z0-9]+)/)[1];
   const { letters } = useAllGetLetterQuery({ userId });
   const { openModal, closeModal, isModalVisible } = useModal();
+  const [selectedLetter, setSelectedLetter] = useState(null);
+
+  const handleLetterClick = (letter: Letter) => {
+    setSelectedLetter(letter);
+    openModal();
+  };
 
   const chunkSize = 6;
   const groupedLetters = Array.from(
@@ -89,7 +97,10 @@ export const Dashboard = () => {
                 className="absolute grid grid-cols-2 grid-rows-3 gap-4 h-[240px]"
               >
                 {letters?.map(
-                  ({ anonymousNickname, treeIconNumber }, index) => {
+                  (
+                    { anonymousNickname, treeIconNumber, ...letterProps },
+                    index,
+                  ) => {
                     const displayedNickname = formatNickname(anonymousNickname);
 
                     return (
@@ -99,7 +110,12 @@ export const Dashboard = () => {
                           isMyDashboard ? 'cursor-pointer' : 'cursor-default'
                         }`}
                         onClick={() => {
-                          isMyDashboard && openModal();
+                          isMyDashboard &&
+                            handleLetterClick({
+                              ...letterProps,
+                              anonymousNickname,
+                              treeIconNumber,
+                            });
                         }}
                       >
                         <span className="text-white">{displayedNickname}</span>
@@ -120,6 +136,7 @@ export const Dashboard = () => {
             closeModal={closeModal}
             isModalVisible={isModalVisible}
             recipientId={userId}
+            selectedLetter={selectedLetter}
           />
         </div>
       )}

@@ -5,7 +5,7 @@ type GetLettersParams = {
   userId: string;
 };
 
-type Letter = {
+export type Letter = {
   writerId: string;
   recipientId: string;
   contents: string;
@@ -14,6 +14,7 @@ type Letter = {
   createdAt: Date;
   updatedAt: Date;
   treeIconNumber: number;
+  id: number;
 };
 
 const getLetters = async ({ userId }: GetLettersParams) => {
@@ -39,6 +40,12 @@ export const useAllGetLetterQuery = ({ userId }: useAllGetLetterQueryProps) => {
     queryKey: [...letterManagerKeys.letters, userId],
     enabled: !!userId,
     queryFn: () => getLetters({ userId }),
+    select: (data) => {
+      return data?.map((letter, idx) => ({
+        id: idx,
+        ...letter,
+      }));
+    },
   });
 
   return {
